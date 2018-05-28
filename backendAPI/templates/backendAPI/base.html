@@ -1,0 +1,34 @@
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="center">
+            <div class="navigation">
+                <div id="root">
+
+
+                </div>
+            </div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    {% block script %}
+
+    {% endblock %}
+</body>
+</html>

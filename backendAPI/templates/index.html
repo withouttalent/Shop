@@ -1,0 +1,35 @@
+{% extends 'backendAPI/base.html' %}
+
+
+
+{% block content %}
+    <div class="row">
+        <div class="content">
+            {% for a in a %}
+                <div class="item">
+                    <div class="head-item">
+                        <div class="img">
+                        <img src="{{ a.pics.url }}" alt="">
+                        </div>
+                    </div>
+                    <div class="bottom-item">
+                        <div class="title-item">
+                            <div class="title">
+                             {{ a.title }}
+                             </div>
+                        </div>
+
+                        <div class="price-item">
+                            <div class="nosale">
+                                <h2>{{ a.price }} Руб.</h2>
+                            </div>
+                        </div>
+                        <div class="buy">
+                            Купить
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

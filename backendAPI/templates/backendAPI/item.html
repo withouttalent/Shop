@@ -1,0 +1,12 @@
+{% extends 'backendAPI/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <div id="root"></div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'bundles/todo.js' %}"></script>
+
+{% endblock %}

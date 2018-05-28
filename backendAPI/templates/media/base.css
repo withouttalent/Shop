@@ -1,0 +1,81 @@
+
+a, a:after, a:before, a:hover, a:link, a:checked, a:active {
+    color: #FFF;
+    text-decoration: none;
+}
+body {
+    margin: 0;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+header.main {
+    width: 100%;
+    height: 60px;
+    background-color: #009E8E;
+    opacity: 0.85;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    color: #FFFFFF;
+}
+div.logo {
+    color: #fff;
+    font-size: 24px;
+    font-family: "Russo One";
+    line-height: 60px;
+    text-align: center;
+    float: left;
+    margin-left: 10px;
+}
+div.content {
+    margin-top: 60px;
+    height: 1920px;
+
+}
+div.shop-window {
+    height: 400px;
+    width: 100%;
+    background-color: #3fdd17;
+}
+div.main {
+    width: 90%;
+    height: 1920px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
+    background-color: #dadada;
+
+}
+div.items {
+    height: 800px;
+}
+div.col {
+    margin-right: 15px;
+    background-color: #fff;
+}
+div.media {
+
+}
+div.item-name {
+
+}
+div.item-price {
+
+}
+div.img-box {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+@font-face {
+    font-family: Russo One;
+    src: url("fonts/RussoOne-Regular.ttf");
+}
