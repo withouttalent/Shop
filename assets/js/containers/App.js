@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Navigation from '../components/Navigation'
 import Items from '../components/Items';
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 import * as AppActions from '../actions/AppActions';
-import { withRouter } from 'react-router-dom'
-
 
 
 class App extends Component {
@@ -35,4 +33,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
-import sessionStorage from 'redux-persist/lib/storage/session'
+import {Link} from 'react-router-dom'
+
 export default class Items extends Component {
 
 
     componentDidMount() {
-        console.log(this.props.token);
         this.props.getItems('articles/', this.props.token);
     }
     render() {

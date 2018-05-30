@@ -1,37 +1,43 @@
-from rest_framework import viewsets
-from .serializers import *
-from rest_framework.test import APITestCase
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.http import Http404
 from rest_framework import generics
-from django.urls import reverse
+from rest_framework import permissions
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .serializers import *
+
+
+class UserDetail(APIView):
+    permission_classes = (permissions.IsAuthenticated)
+
+    def get(self, request, format=None):
+        user = User.objects.get(pk=1)
+
+
+class ListUsers(APIView):
+    permission_classes = ()
+
+    def get(self, request, format=None):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
 
 
 
 class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
    queryset = Article.objects.all()
-
-
+   permission_classes = (permissions.IsAuthenticated,)
    def get_serializer_class(self):
+       print()
        if self.action == 'list':
            return ArticlePreviewSerializer
        return ArticleDetailSerializer
 
 
-
-# class FilterItem(viewsets.ViewSet):
-#     def list(self, request, filter, format=None):
-#         print(filter)
-#         filter = Article.objects.filter(category__name=filter)
-#         serializer = ArticlePreviewSerializer(filter, many=True)
-#         return Response(serializer.data)
-
-
-
 class FilterItem(generics.ListAPIView):
     serializer_class = ArticlePreviewSerializer
+    permission_classes = ()
 
     def get_queryset(self):
         getFilter = self.kwargs['filter']
@@ -40,19 +46,8 @@ class FilterItem(generics.ListAPIView):
 
 class ViewCategories(viewsets.ReadOnlyModelViewSet):
     queryset = Categories.objects.all()
-
+    permission_classes = ()
     def get_serializer_class(self):
         return CategoriesSerializer
 
 
-class UserCreate(APIView):
-    """
-    Creates the user.
-    """
-
-    def post(self, request, format='json'):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)

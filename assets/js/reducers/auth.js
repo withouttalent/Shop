@@ -1,9 +1,7 @@
-import {LOGIN_USER} from "../constans/Page";
-
-
 const initialState = {
     fetching: false,
     token: localStorage.getItem('token'),
+    refresh: localStorage.getItem('refresh'),
 }
 
 
