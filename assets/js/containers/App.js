@@ -12,10 +12,13 @@ class App extends Component {
         const { getItems, getCategories, selectFilter } = this.props.AppActions;
 
 
-        return <div className="center">
-            <Navigation categories={navigation.categories} fetching={navigation.fetching} selectFilter={selectFilter} getCategories={getCategories} token={auth.token} />
-            <Items fetching={items.fetching} items={items.items} getItems={getItems} token={auth.token}   />
-        </div>
+        return auth.isValid === true ?
+            <div className="center">
+                <Navigation categories={navigation.categories} fetching={navigation.fetching}
+                            selectFilter={selectFilter} getCategories={getCategories} token={auth.token}/>
+                <Items fetching={items.fetching} items={items.items} getItems={getItems} token={auth.token}/>
+            </div> :
+            <div className="loading">Loading...</div>
     }
 }
 

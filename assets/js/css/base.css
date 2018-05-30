@@ -6,6 +6,8 @@ header {
     height: 50px;
     width: 100%;
     background-color: #3c3b36;
+    display: flex;
+    justify-content: flex-end;
 }
 main {
     display: flex;
@@ -132,11 +134,34 @@ a {
     color: #000;
 }
 
-.signup, .login {
+.signup, .login, .logout {
     color: #FFFFFF;
     font-size: 20px;
     float: right;
     text-align: center;
     line-height: 50px;
     margin-right: 20px;
+}
+
+.form-login {
+    position: relative;
+    float: right;
+    margin-top: 60px;
+    z-index: 9999;
+    margin-right: -135px;
+    width: 275px;
+    padding-left: 10px;
+    height: 135px;
+    background-color: #e7e7e7;
+
+}
+
+input {
+    width: 87%;
+    height: 30px;
+    padding-left: 20px;
+}
+
+.form-group-login {
+    padding-top: 10px;
 }

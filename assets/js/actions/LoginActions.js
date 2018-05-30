@@ -1,18 +1,7 @@
-import {LOGIN_USER, REFRESH_TOKEN, VERIFY_TOKEN} from "../constans/Page";
+import {LOGIN_USER, LOGOUT, REFRESH_TOKEN, VERIFY_TOKEN} from "../constans/Page";
 import 'babel-polyfill'
 import 'whatwg-fetch'
 import axios from 'axios';
-
-
-// export const login = (username, password) => ({
-//   [RSAA]: {
-//     endpoint: 'http://127.0.0.1:8000/api/v0/api-token-auth/',
-//     method: 'POST',
-//     body: JSON.stringify({username, password}),
-//     headers: { 'Content-Type': 'application/json' },
-//     types: LOGIN_USER
-//   }
-// })
 
 
 export function login(username, password) {
@@ -22,15 +11,26 @@ export function login(username, password) {
            .then(function(token) {
                localStorage.setItem('token', token['access']);
                localStorage.setItem('refresh', token['refresh']);
-               return dispatch({type: LOGIN_USER[1], payload: token['access']});
+               const token_jwt = token['access'];
+               const refresh_jwt = token['refresh'];
+               return dispatch({type: LOGIN_USER[1], payload: {token_jwt, refresh_jwt}});
            })
            .catch(error => dispatch({type: LOGIN_USER[2]}))
     }
 }
 
-export const refreshToken = (dispatch, refresh) => {
+export function logout() {
+    return (dispatch) => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh');
+        return dispatch({type: LOGOUT});
+    }
+
+}
+
+export const refreshToken = async (dispatch, refresh) => {
     dispatch({type: REFRESH_TOKEN[0]});
-    axios.post('http://127.0.0.1:8000/api/v0/api-token-refresh/', {refresh: refresh})
+    await axios.post('http://127.0.0.1:8000/api/v0/api-token-refresh/', {refresh: refresh})
         .then(function (response) {
             if (response.status === 200) {
                 const data = response.data;
@@ -42,12 +42,12 @@ export const refreshToken = (dispatch, refresh) => {
 };
 
 export function checkToken(token, refresh) {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch({type: VERIFY_TOKEN[0]});
-        axios.post('http://127.0.0.1:8000/api/v0/api-token-verify/', {token: token})
+        await axios.post('http://127.0.0.1:8000/api/v0/api-token-verify/', {token: token})
             .then(function (response) {
                 if (response.status === 200) {
-                    return dispatch({type: VERIFY_TOKEN[1]});
+                    return dispatch({type: VERIFY_TOKEN[1], payload: {token, refresh}});
                 } else if (response.status === 401) {
                     const data = response.data;
                     console.log(data['detail']);
