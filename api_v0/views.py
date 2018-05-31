@@ -7,6 +7,16 @@ from rest_framework.views import APIView
 from .serializers import *
 
 
+class DetailUser(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        user = User.objects.filter(username=request.user)
+        serializer = UserSerializer(user, many=True)
+        return Response(serializer.data)
+
+
+
 class ListUsers(APIView):
     permission_classes = ()
 

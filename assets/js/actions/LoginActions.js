@@ -1,4 +1,4 @@
-import {LOGIN_USER, LOGOUT, REFRESH_TOKEN, VERIFY_TOKEN} from "../constans/Page";
+import {GET_USER, LOGIN_USER, LOGOUT, REFRESH_TOKEN, VERIFY_TOKEN} from "../constans/Page";
 import 'babel-polyfill'
 import 'whatwg-fetch'
 import axios from 'axios';
@@ -19,6 +19,7 @@ export function login(username, password) {
     }
 }
 
+
 export function logout() {
     return (dispatch) => {
         localStorage.removeItem('token');
@@ -28,9 +29,9 @@ export function logout() {
 
 }
 
-export const refreshToken = async (dispatch, refresh) => {
+export const refreshToken = (dispatch, refresh) => {
     dispatch({type: REFRESH_TOKEN[0]});
-    await axios.post('http://127.0.0.1:8000/api/v0/api-token-refresh/', {refresh: refresh})
+    axios.post('http://127.0.0.1:8000/api/v0/api-token-refresh/', {refresh: refresh})
         .then(function (response) {
             if (response.status === 200) {
                 const data = response.data;
@@ -42,12 +43,13 @@ export const refreshToken = async (dispatch, refresh) => {
 };
 
 export function checkToken(token, refresh) {
-    return async (dispatch) => {
+    return (dispatch) => {
         dispatch({type: VERIFY_TOKEN[0]});
-        await axios.post('http://127.0.0.1:8000/api/v0/api-token-verify/', {token: token})
+        axios.post('http://127.0.0.1:8000/api/v0/api-token-verify/', {token: token})
             .then(function (response) {
                 if (response.status === 200) {
-                    return dispatch({type: VERIFY_TOKEN[1], payload: {token, refresh}});
+                    dispatch({type: VERIFY_TOKEN[1], payload: {token, refresh}});
+                    getUser(dispatch, token);
                 } else if (response.status === 401) {
                     const data = response.data;
                     console.log(data['detail']);
@@ -63,3 +65,15 @@ export function checkToken(token, refresh) {
             })
     }
 }
+
+export function getUser(token) {
+    return (dispatch) => {
+        dispatch({type: GET_USER[0]});
+        axios.get('http://127.0.0.1:8000/api/v0/user-detail/', {headers: {'Authorization': 'JWT ' + token}})
+            .then(response => response.data)
+            .then(data => {
+                dispatch({type: GET_USER[1], payload: data})
+
+            })
+    }
+};

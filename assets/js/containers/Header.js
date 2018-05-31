@@ -15,6 +15,7 @@ class Header extends Component {
         const token = localStorage.getItem('token');
         const refresh = localStorage.getItem('refresh');
         this.props.LoginActions.checkToken(token, refresh);
+        this.props.LoginActions.getUser(token);
     }
 
     onSubmit(e) {
@@ -36,10 +37,10 @@ class Header extends Component {
     }
 
     render() {
-        const {auth} = this.props;
         return <header>
-            {this.props.auth.isValid === false ?
+            {this.props.auth.isValid === false && this.props.user.inf.is_active === true ?
                 <div className="auth">
+                    {console.log(this.props.user.inf.is_active)}
                     <div className="signup">Sign up</div>
                     <div onClick={::this.handleClick} className="login">log in</div>
                     {this.state.checkClick === true ?
@@ -64,6 +65,11 @@ class Header extends Component {
                 </div>
                 :
                 <div className="auth-true">
+                    {this.props.user.inf.is_active === true ?
+                        <div className="username">{this.props.user.inf.email}</div>
+                        :
+                        <div>Hi</div>
+                    }
                     <div onClick={::this.onClickLogOut} className="logout">Log Out</div>
                 </div>
 
@@ -76,7 +82,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.auth
+        auth: state.auth,
+        user: state.user,
     }
 }
 

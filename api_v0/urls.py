@@ -13,6 +13,7 @@ urlpatterns = [
     path('filter/<str:filter>', FilterItem.as_view()),
     path('articles/', ArticleViewSet.as_view({'get': 'list'})),
     path('users/', ListUsers.as_view()),
+    path('user-detail/', DetailUser.as_view()),
     path('api-token-auth/', TokenObtainPairView.as_view()),
     path('api-token-verify/', TokenVerifyView.as_view()),
     path('api-token-refresh/', TokenRefreshView.as_view()),

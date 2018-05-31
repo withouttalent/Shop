@@ -15,7 +15,7 @@ export default class Items extends Component {
             {fetching ?
             <div>Loading...</div>
             :
-            items.length === undefined || 0 || null ?
+                items.length === undefined || items.length === 0 || null ?
             <div>Nothing items...</div>
             :
                             items.map(item => (

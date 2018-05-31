@@ -26,7 +26,7 @@ function mapStateToProps(state) {
     return {
         items: state.items,
         navigation: state.navigation,
-        auth: state.auth
+        auth: state.auth,
     }
 }
 
