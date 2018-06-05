@@ -1,6 +1,7 @@
 import {
     FILTER_CATEGORIES_ERROR,
-    FILTER_CATEGORIES_REQUEST, FILTER_CATEGORIES_SUCCESS,
+    FILTER_CATEGORIES_REQUEST,
+    FILTER_CATEGORIES_SUCCESS,
     GET_ITEMS_ERROR,
     GET_ITEMS_REQUEST,
     GET_ITEMS_SUCCESS,
@@ -9,7 +10,7 @@ import {
 
 
 const initialState = {
-    fetching: true,
+    fetching: false,
     items: {
         // 0: {
         //     id: 0,

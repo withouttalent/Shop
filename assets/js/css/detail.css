@@ -1,0 +1,38 @@
+.item-detail {
+    width: 100%;
+    position: relative;
+}
+
+.title-detail {
+
+}
+
+.img-container {
+    width: 250px;
+    height: 200px;
+    float: left;
+}
+
+img {
+
+}
+
+.desc-detail {
+
+}
+
+button {
+    height: 30px;
+    width: 100%;
+    float: left;
+    background-color: #ffc44e;
+    color: #fff;
+}
+
+.form-number {
+    text-align: center;
+}
+
+.form-add-cart {
+    width: 200px;
+}

@@ -1,34 +1,31 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
-import * as LoginActions from '../actions/LoginActions';
-import Login from '../components/Login';
-import SignUp from '../components/SignUp'
-import { withRouter } from 'react-router-dom'
-
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux';
+import * as ProfileActions from '../actions/ProfileActions';
 
 
 class Authentication extends Component {
     render() {
-        const { users } = this.props;
-        const { login } = this.props.LoginActions;
+        const {profile, auth} = this.props;
+        const {getCart} = this.props.ProfileActions;
         return <div className="content">
-            <Login login={login} users={users} />
-            {/*<SignUp login={login} users={users}/>*/}
+            {/*<Cart profile={profile} auth={auth} getCart={getCart} />*/}
+            <div>hi</div>
         </div>
     }
 }
 
 export function mapStateToProps(state) {
     return {
-        users: state.users,
+        profile: state.profile,
+        auth: state.auth
     }
 }
 
 export function mapDispatchToProps(dispatch) {
     return {
-        LoginActions: bindActionCreators(LoginActions, dispatch)
+        ProfileActions: bindActionCreators(ProfileActions, dispatch)
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Authentication))
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication)

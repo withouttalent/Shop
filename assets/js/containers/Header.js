@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import * as LoginActions from '../actions/LoginActions'
+import {Link} from 'react-router-dom'
+
 
 class Header extends Component {
     constructor(props) {
@@ -11,12 +13,17 @@ class Header extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const token = localStorage.getItem('token');
         const refresh = localStorage.getItem('refresh');
         this.props.LoginActions.checkToken(token, refresh);
-        this.props.LoginActions.getUser(token);
     }
+
+    // componentDidMount() {
+    //     const token = localStorage.getItem('token');
+    //     const refresh = localStorage.getItem('refresh');
+    //     this.props.LoginActions.checkToken(token, refresh);
+    // }
 
     onSubmit(e) {
         e.preventDefault();
@@ -38,9 +45,10 @@ class Header extends Component {
 
     render() {
         return <header>
-            {this.props.auth.isValid === false && this.props.user.inf.is_active === true ?
+            <div className="non-container">
+            </div>
+            {(this.props.auth.isValid === false) ?
                 <div className="auth">
-                    {console.log(this.props.user.inf.is_active)}
                     <div className="signup">Sign up</div>
                     <div onClick={::this.handleClick} className="login">log in</div>
                     {this.state.checkClick === true ?
@@ -65,12 +73,13 @@ class Header extends Component {
                 </div>
                 :
                 <div className="auth-true">
-                    {this.props.user.inf.is_active === true ?
-                        <div className="username">{this.props.user.inf.email}</div>
-                        :
-                        <div>Hi</div>
-                    }
                     <div onClick={::this.onClickLogOut} className="logout">Log Out</div>
+                    {this.props.profile.fetching === false ?
+                        <Link to="/user">
+                            <div className="username">{this.props.profile.user["0"].username}</div>
+                        </Link>
+                        :
+                        undefined}
                 </div>
 
 
@@ -83,7 +92,7 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         auth: state.auth,
-        user: state.user,
+        profile: state.profile,
     }
 }
 

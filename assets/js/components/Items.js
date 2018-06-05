@@ -20,7 +20,11 @@ export default class Items extends Component {
             :
                             items.map(item => (
                     <div key={item.id} className="item">
-                        <Link to='/:item.id'>
+
+                        <Link to={{
+                            pathname: item.id
+                        }}>
+
                             <div className="head-item">
                                 <div className="img">
                                     <img src={item.pics} alt=""/>

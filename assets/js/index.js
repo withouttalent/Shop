@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import App from './containers/App';
-import Authentication from './containers/Authentication'
 import {BrowserRouter as Router, BrowserRouter, Route} from 'react-router-dom'
 import configureStore from './store/configureStore'
 import './css/base.css'
+// CONTAINERS
+import App from './containers/App';
+import Authentication from './containers/Authentication'
 import Header from './containers/Header'
+import Detail from './containers/Detail'
+//
+
+
 
 const store = configureStore();
 
@@ -21,7 +26,8 @@ ReactDOM.render(
                 <main>
                     <div id="root">
             <Route exact path="/" component={App}/>
-            <Route path="/signup" component={Authentication} />
+                        <Route path="/user" component={Authentication}/>
+                        <Route path="/:id" component={Detail}/>
                         </div>
                 </main>
 

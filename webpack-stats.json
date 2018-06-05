@@ -1,1 +1,15 @@
-{"status":"done","chunks":{"main":[{"name":"bundle.min.js","path":"/bundle.min.js"}]}}
+{
+  "status": "done",
+  "chunks": {
+    "main": [
+      {
+        "name": "bundle.min.js",
+        "path": "/bundle.min.js"
+      },
+      {
+        "name": "0.4880be55a08e600c6cff.hot-update.js",
+        "path": "/0.4880be55a08e600c6cff.hot-update.js"
+      }
+    ]
+  }
+}

@@ -10,13 +10,15 @@ router = SimpleRouter()
 router.register(r'categories', ViewCategories)
 
 urlpatterns = [
-    path('filter/<str:filter>', FilterItem.as_view()),
+    path('filter/<str:filter>/', FilterItem.as_view()),
     path('articles/', ArticleViewSet.as_view({'get': 'list'})),
+    path('articles/<int:id>/', ArticleDetailView.as_view()),
     path('users/', ListUsers.as_view()),
     path('user-detail/', DetailUser.as_view()),
     path('api-token-auth/', TokenObtainPairView.as_view()),
     path('api-token-verify/', TokenVerifyView.as_view()),
     path('api-token-refresh/', TokenRefreshView.as_view()),
+    path('user-cart/', ListCart.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

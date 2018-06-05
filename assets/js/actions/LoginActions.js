@@ -36,11 +36,27 @@ export const refreshToken = (dispatch, refresh) => {
             if (response.status === 200) {
                 const data = response.data;
                 localStorage.setItem('token', data['access']);
-                return dispatch({type: REFRESH_TOKEN[1], payload: data['access']})
+                dispatch({type: REFRESH_TOKEN[1], payload: data['access']})
             }
         })
         .catch(error => dispatch({type: REFRESH_TOKEN[2]}))
 };
+
+export const getProfile = (dispatch, token) => {
+    dispatch({type: GET_USER[0]});
+    axios.get('http://127.0.0.1:8000/api/v0/user-detail/', {headers: {'Authorization': 'JWT ' + token}})
+        .then(function (response) {
+            if (response.status === 200) {
+                return response.data;
+            }
+        })
+        .then(function (data) {
+            dispatch({type: GET_USER[1], payload: data})
+        })
+        .catch(error => dispatch({type: GET_USER[2]}))
+};
+
+
 
 export function checkToken(token, refresh) {
     return (dispatch) => {
@@ -49,7 +65,7 @@ export function checkToken(token, refresh) {
             .then(function (response) {
                 if (response.status === 200) {
                     dispatch({type: VERIFY_TOKEN[1], payload: {token, refresh}});
-                    getUser(dispatch, token);
+                    getProfile(dispatch, token);
                 } else if (response.status === 401) {
                     const data = response.data;
                     console.log(data['detail']);
@@ -65,15 +81,3 @@ export function checkToken(token, refresh) {
             })
     }
 }
-
-export function getUser(token) {
-    return (dispatch) => {
-        dispatch({type: GET_USER[0]});
-        axios.get('http://127.0.0.1:8000/api/v0/user-detail/', {headers: {'Authorization': 'JWT ' + token}})
-            .then(response => response.data)
-            .then(data => {
-                dispatch({type: GET_USER[1], payload: data})
-
-            })
-    }
-};

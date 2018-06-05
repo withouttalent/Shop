@@ -134,7 +134,7 @@ a {
     color: #000;
 }
 
-.signup, .login, .logout {
+.signup, .login, .logout, .username {
     color: #FFFFFF;
     font-size: 20px;
     float: right;
