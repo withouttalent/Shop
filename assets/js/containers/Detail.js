@@ -19,7 +19,8 @@ class Detail extends Component {
     }
 
     render() {
-        return <div className="center">
+        return <div id="root">
+            <div className="center">
             {this.props.detail.fetching === true ?
                 <div className="spin">Spin...</div> :
                 (this.props.detail.item.length === undefined) && (this.props.detail.item.length === 0) ?
@@ -40,6 +41,7 @@ class Detail extends Component {
                         <div className="desc-detail">{this.props.detail.item.desc}</div>
                     </div>
             }
+        </div>
         </div>
     }
 

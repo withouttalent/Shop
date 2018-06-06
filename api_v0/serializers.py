@@ -12,6 +12,7 @@ class CategoriesSerializer(serializers.ModelSerializer):
 
 
 class ArticlePreviewSerializer(serializers.ModelSerializer):
+    pics = serializers.URLField(source='get_absolute_url')
    category = CategoriesSerializer(read_only=True, many=True)
    class Meta:
        model = Article
@@ -39,9 +40,19 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'first_name', 'is_active')
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="user.username")
+    email = serializers.CharField(source="user.email")
+    is_active = serializers.BooleanField(source="user.is_active")
+    pic = serializers.URLField(source="get_absolute_url")
+
+    # user = UserSerializer(read_only=True)
+    class Meta:
+        model = Profile
+        fields = ('username', 'email', 'is_active', 'id', 'pic')
+
 class UserCartSerializer(serializers.ModelSerializer):
     article = ArticlePreviewSerializer(read_only=True)
-
     class Meta:
         model = OrderItem
         fields = ['id', 'count', 'user', 'article']

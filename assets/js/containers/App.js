@@ -4,8 +4,6 @@ import Navigation from '../components/Navigation'
 import Items from '../components/Items';
 import {bindActionCreators} from 'redux';
 import * as AppActions from '../actions/AppActions';
-import {Route} from 'react-router-dom'
-import Authentication from "./Authentication";
 
 class App extends Component {
     render() {
@@ -13,14 +11,15 @@ class App extends Component {
         const { getItems, getCategories, selectFilter } = this.props.AppActions;
 
 
-        return auth.isValid === true ?
+        return <div id="root">
             <div className="center">
-                <Route path="/user" component={Authentication}/>
                 <Navigation categories={navigation.categories} fetching={navigation.fetching}
                             selectFilter={selectFilter} getCategories={getCategories} token={auth.token}/>
                 <Items fetching={items.fetching} items={items.items} getItems={getItems} token={auth.token}/>
-            </div> :
-            <div className="loading">Loading...</div>
+            </div>
+        </div>
+
+
     }
 }
 

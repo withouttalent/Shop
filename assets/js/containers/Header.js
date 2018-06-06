@@ -76,7 +76,7 @@ class Header extends Component {
                     <div onClick={::this.onClickLogOut} className="logout">Log Out</div>
                     {this.props.profile.fetching === false ?
                         <Link to="/user">
-                            <div className="username">{this.props.profile.user["0"].username}</div>
+                            <div className="username">{this.props.profile.user.username}</div>
                         </Link>
                         :
                         undefined}

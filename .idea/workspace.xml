@@ -2,54 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da29e6d1-a6d4-4ac8-99ac-ab73b0535e66" name="Default" comment="undo">
-      <change afterPath="$PROJECT_DIR$/assets/js/actions/ProfileActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/components/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/css/detail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/reducers/detail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/reducers/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/18aeb7bac034fbceacf38b88a4dc0bd29589be9b0604c43af72fa048f799a5ae.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/443f25f3509a1b902bfa278bd2311ada6ff2ab284ab6859b075087061fff4b98.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/51_gpRJf0R.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/552_denon_dbp-1610.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/760ccccde3e339d34b0ff94c4bc3d7211bf44ad911f81744b7e72bd807bba2a9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/a67bf663fe9da85c8d038ba9b8e69e89100441d05c3b257aaef975416e3d0463.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/d4ef0e10b0c07923bd25d119dd7c2126.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/jh0n1101.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/templates/media/templates/media/orig.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_v0/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api_v0/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_v0/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_v0/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_v0/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_v0/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_v0/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/actions/AppActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/actions/AppActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/actions/DetailActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/actions/DetailActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/actions/LoginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/actions/LoginActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/actions/actionCreators.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/actions/actionCreators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/components/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/constans/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/constans/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/components/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/components/Cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/containers/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/containers/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/containers/Authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/containers/Authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/containers/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/containers/Detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/containers/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/containers/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/reducers/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/reducers/user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/backendAPI/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/backendAPI/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0002_auto_20180428_2026.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0003_auto_20180429_1547.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0004_auto_20180501_1846.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0005_auto_20180501_1855.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0006_auto_20180501_1908.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backendAPI/migrations/0007_auto_20180521_1116.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backendAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backendAPI/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack-stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/webpack-stats.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,65 +27,115 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/containers/Header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="76" column="60" selection-start-line="76" selection-start-column="60" selection-end-line="76" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api_v0/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Authentication.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/containers/Authentication.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/containers/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cart.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/components/Cart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.60329217">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/containers/App.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="93">
+                  <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/containers/Header.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="439">
+                  <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Detail.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/containers/Detail.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="630">
+                  <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Authentication.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/containers/Authentication.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Cart.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/assets/js/components/Cart.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api_v0/serializers.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="317">
+                  <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/api_v0/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProfileActions.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/actions/ProfileActions.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#0#23#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/assets/js/reducers/profile.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="base.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/assets/js/css/base.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="347">
+                  <caret line="191" column="14" lean-forward="true" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -171,7 +185,6 @@
         <option value="$PROJECT_DIR$/assets/js/containers/Index.js" />
         <option value="$PROJECT_DIR$/assets/js/reducers/auth.js" />
         <option value="$PROJECT_DIR$/assets/js/reducers/user.js" />
-        <option value="$PROJECT_DIR$/assets/js/css/base.css" />
         <option value="$PROJECT_DIR$/assets/js/components/Items.js" />
         <option value="$PROJECT_DIR$/assets/js/actions/actionCreators.js" />
         <option value="$PROJECT_DIR$/assets/js/reducers/detail.js" />
@@ -183,19 +196,20 @@
         <option value="$PROJECT_DIR$/assets/js/css/detail.css" />
         <option value="$PROJECT_DIR$/assets/js/actions/AppActions.js" />
         <option value="$PROJECT_DIR$/assets/js/actions/DetailActions.js" />
-        <option value="$PROJECT_DIR$/backendAPI/models.py" />
-        <option value="$PROJECT_DIR$/api_v0/views.py" />
         <option value="$PROJECT_DIR$/assets/js/constans/Page.js" />
-        <option value="$PROJECT_DIR$/assets/js/reducers/profile.js" />
         <option value="$PROJECT_DIR$/assets/js/actions/LoginActions.js" />
         <option value="$PROJECT_DIR$/assets/js/actions/ProfileActions.js" />
-        <option value="$PROJECT_DIR$/assets/js/components/Cart.js" />
-        <option value="$PROJECT_DIR$/assets/js/index.js" />
-        <option value="$PROJECT_DIR$/assets/js/containers/Header.js" />
-        <option value="$PROJECT_DIR$/assets/js/containers/Detail.js" />
         <option value="$PROJECT_DIR$/assets/js/containers/Authentication.js" />
+        <option value="$PROJECT_DIR$/assets/js/index.js" />
+        <option value="$PROJECT_DIR$/assets/js/containers/Detail.js" />
+        <option value="$PROJECT_DIR$/api_v0/views.py" />
+        <option value="$PROJECT_DIR$/assets/js/reducers/profile.js" />
         <option value="$PROJECT_DIR$/assets/js/containers/App.js" />
+        <option value="$PROJECT_DIR$/assets/js/containers/Header.js" />
         <option value="$PROJECT_DIR$/api_v0/serializers.py" />
+        <option value="$PROJECT_DIR$/backendAPI/models.py" />
+        <option value="$PROJECT_DIR$/assets/js/css/base.css" />
+        <option value="$PROJECT_DIR$/assets/js/components/Cart.js" />
       </list>
     </option>
   </component>
@@ -214,9 +228,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="415" />
+    <option name="x" value="809" />
     <option name="y" value="27" />
-    <option name="width" value="1495" />
+    <option name="width" value="1111" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -227,6 +241,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,6 +298,13 @@
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shop" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -299,7 +321,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,7 +416,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="415" y="27" width="1495" height="1000" extended-state="4" />
+    <frame x="548" y="27" width="1372" height="1000" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="5" />
@@ -403,16 +424,16 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.3295964" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49966556" visible="true" weight="0.31573033" />
-      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.50033444" side_tool="true" visible="true" weight="0.31573033" />
-      <window_info anchor="bottom" id="TypeScript" order="14" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49887893" visible="true" weight="0.15250836" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978134" visible="true" weight="0.31573033" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.5021866" side_tool="true" visible="true" weight="0.31573033" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49887893" visible="true" weight="0.114431486" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49887386" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="14" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -571,20 +592,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="139" column="14" selection-start-line="139" selection-start-column="14" selection-end-line="139" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="130" column="6" selection-start-line="130" selection-start-column="6" selection-end-line="130" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -623,9 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -640,9 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#0#298#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -650,16 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backendAPI/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -674,9 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="2" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,37 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api_v0/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/reducers/auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="20" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/reducers/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/containers/Detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,68 +728,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/actions/ProfileActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/actions/LoginActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="46" column="105" lean-forward="true" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="105" />
-          <folding>
-            <element signature="e#0#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/components/Cart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        <state relative-caret-position="345">
+          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/containers/Header.js">
+    <entry file="file://$PROJECT_DIR$/assets/js/containers/Detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="76" column="60" selection-start-line="76" selection-start-column="60" selection-end-line="76" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/containers/Authentication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+        <state relative-caret-position="630">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/actions/ProfileActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/reducers/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/containers/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        <state relative-caret-position="93">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/containers/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/containers/Authentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api_v0/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="317">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backendAPI/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="51" column="51" lean-forward="true" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api_v0/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="191" column="14" lean-forward="true" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/components/Cart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>

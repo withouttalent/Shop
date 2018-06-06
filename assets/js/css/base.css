@@ -12,7 +12,6 @@ header {
 main {
     display: flex;
     justify-content: center;
-    min-height: 1120px;
     width: 100%;
 }
 footer {
@@ -38,7 +37,7 @@ footer {
     flex-wrap: wrap;
     align-content: baseline;
     justify-content: center;
-    flex-basis: 235px;
+    /*flex-basis: 235px;*/
     padding-right: 20px;
 }
 .item {
@@ -164,4 +163,43 @@ input {
 
 .form-group-login {
     padding-top: 10px;
+}
+
+.cart {
+    width: 100%;
+    display: flex;
+}
+
+.user-content {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #787878;
+    color: #FFF;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.wrap-user {
+    position: relative;
+}
+
+.img-profile {
+    position: relative;
+    text-align: center;
+}
+
+.username-cart {
+    position: relative;
+    text-align: center;
+
+}
+
+.cart-content {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

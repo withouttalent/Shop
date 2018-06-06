@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter as Router, BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter as Router, BrowserRouter, Route, Switch} from 'react-router-dom'
 import configureStore from './store/configureStore'
 import './css/base.css'
 // CONTAINERS
@@ -24,11 +24,12 @@ ReactDOM.render(
             <div className="none-container">
                 <Header/>
                 <main>
-                    <div id="root">
-            <Route exact path="/" component={App}/>
+
+                    <Switch>
+                        <Route exact path="/" component={App}/>
                         <Route path="/user" component={Authentication}/>
                         <Route path="/:id" component={Detail}/>
-                        </div>
+                    </Switch>
                 </main>
 
 
