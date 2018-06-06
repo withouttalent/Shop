@@ -24,7 +24,6 @@ ReactDOM.render(
             <div className="none-container">
                 <Header/>
                 <main>
-
                     <Switch>
                         <Route exact path="/" component={App}/>
                         <Route path="/user" component={Authentication}/>

@@ -1,18 +1,16 @@
 import React, {Component} from 'react'
 
-
 export default class Cart extends Component {
 
     componentDidMount() {
-        const token = this.props.auth.token;
-        console.log(token);
+        const token = localStorage.getItem('token');
         if (token !== undefined) {
             this.props.getCart(token)
         }
     }
 
     render() {
-        const {profile, auth} = this.props;
+        const {profile} = this.props;
         return <div className="cart">
             <div className="user-content">
                 <div className="wrap-user">
@@ -23,14 +21,13 @@ export default class Cart extends Component {
                 </div>
             </div>
             <div className="cart-content">
-
-                {this.props.auth.fetching === true ?
-                    <div className="spin">spin...</div> :
-                    <div>Hi...</div>
-                    // profile.cart.map((item) => <div key={item.id} className="container-item">
-                    //
-                    // </div>)
-
+                {(profile.cart.length === 0) || (profile.cart.length === undefined) ?
+                    undefined
+                    :
+                    profile.cart.map((item) => <div key={item.id} className="item-cart">
+                            <div className="title-item">{item.article.title}</div>
+                        </div>
+                    )
                 }
             </div>
         </div>
