@@ -19,6 +19,7 @@ urlpatterns = [
     path('api-token-verify/', TokenVerifyView.as_view()),
     path('api-token-refresh/', TokenRefreshView.as_view()),
     path('user-cart/', ListCart.as_view()),
+    path('user-cart/remove/<int:id>/', RemoveInCart.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

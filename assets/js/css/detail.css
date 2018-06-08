@@ -21,7 +21,7 @@ img {
 
 }
 
-button {
+button.button-cart {
     height: 30px;
     width: 100%;
     float: left;

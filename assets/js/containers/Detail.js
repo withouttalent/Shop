@@ -14,16 +14,16 @@ class Detail extends Component {
 
     onClickCart(e) {
         e.preventDefault();
-
-
+        const count = this.count.value;
+        const id = this.props.detail.item.id;
+        const token = localStorage.getItem('token');
+        this.props.AppActions.putArticleToCart(id, count, token)
     }
 
     render() {
         return <div id="root">
             <div className="center">
-            {this.props.detail.fetching === true ?
-                <div className="spin">Spin...</div> :
-                (this.props.detail.item.length === undefined) && (this.props.detail.item.length === 0) ?
+                {(this.props.detail.item === undefined) ?
                     <div className="notc">Notning</div> :
                     <div className="item-detail">
                         <div className="title-detail">{this.props.detail.item.title}</div>
@@ -34,7 +34,7 @@ class Detail extends Component {
                                     <input type="number" ref={(node) => {
                                         this.count = node
                                     }} defaultValue='1' className="form-number"/>
-                                    <button>Add To Cart</button>
+                                    <button className="button-cart">Add To Cart</button>
                                 </form>
                             </div>
                         </div>
@@ -50,6 +50,7 @@ class Detail extends Component {
 function mapStateToProps(state, ownProps) {
     return {
         detail: state.detail,
+        profile: state.profile,
         match: ownProps.location.pathname,
 
     }

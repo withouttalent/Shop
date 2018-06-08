@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 export default class Navigation extends Component {
@@ -17,9 +17,9 @@ export default class Navigation extends Component {
         const {categories, fetching} = this.props;
         return <div className="navigation">
             {fetching ?
-            <div>Loading...</div> :
+                undefined :
             categories.length === undefined || 0 || null ?
-            <div>No categories</div>
+                undefined
                 :
                 <div className="exsistens">
                     {categories.map((category, id) => <Link key={id} to='/filter'><div key={id} onClick={::this.handleClick} className="navigation-category">{category.name}</div></Link> )}

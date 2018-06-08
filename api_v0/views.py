@@ -38,10 +38,31 @@ class ListCart(APIView):
         return Response(serializers.data)
 
     def post(self, request, format=None):
-        print(request.data)
         article = Article.objects.get(pk=request.data['id'])
         User.objects.get(username=request.user).orderitem_set.create(article=article, count=request.data['count'])
         return Response(status=status.HTTP_201_CREATED)
+
+    def delete(self, request, format=None):
+        print(request)
+        post = request.data
+        try:
+            queryset = OrderItem.objects.filter(user__username=request.user).get(pk=request.data['id']).delete()
+            return Response(status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class RemoveInCart(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, id, format=None):
+        try:
+            queryset = OrderItem.objects.filter(user__username=request.user).get(pk=id).delete()
+            return Response(status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 

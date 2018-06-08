@@ -28,6 +28,10 @@ class Article(models.Model):
     def get_absolute_url(self):
         return "http://127.0.0.1:8000" + self.pics.url
 
+    def get_thumbnail_url(self):
+        return "http://127.0.0.1:8000" + self.pics.url
+
+
     @property
     def announce(self):
         return self.desc[:512]
@@ -65,3 +69,4 @@ class OrderItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, blank=True, on_delete=models.CASCADE)
     count = models.IntegerField(default=1)
+

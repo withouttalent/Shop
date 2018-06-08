@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from sorl_thumbnail_serializer.fields import HyperlinkedSorlImageField
 
 from backendAPI.models import *
 
@@ -12,7 +13,10 @@ class CategoriesSerializer(serializers.ModelSerializer):
 
 
 class ArticlePreviewSerializer(serializers.ModelSerializer):
-    pics = serializers.URLField(source='get_absolute_url')
+    pics = HyperlinkedSorlImageField('156x156',
+                                     options={"crop": "noop"},
+                                     source='get_thumbnail_url',
+                                     read_only=True)
    category = CategoriesSerializer(read_only=True, many=True)
    class Meta:
        model = Article
@@ -23,7 +27,6 @@ class ArticlePreviewSerializer(serializers.ModelSerializer):
            'price',
            'category',
        ]
-
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
     pics = serializers.URLField(source='get_absolute_url')
@@ -55,4 +58,4 @@ class UserCartSerializer(serializers.ModelSerializer):
     article = ArticlePreviewSerializer(read_only=True)
     class Meta:
         model = OrderItem
-        fields = ['id', 'count', 'user', 'article']
+        fields = ('id', 'count', 'user', 'article')

@@ -13,7 +13,7 @@ export default class Items extends Component {
         return <div className="row">
         <div className="content">
             {fetching ?
-            <div>Loading...</div>
+                undefined
             :
                 items.length === undefined || items.length === 0 || null ?
             <div>Nothing items...</div>

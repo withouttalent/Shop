@@ -1,4 +1,4 @@
-import {GET_CART, GET_USER} from "../constans/Page";
+import {ADD_TO_CART, GET_CART, GET_USER, REMOVE_IN_CART} from "../constans/Page";
 
 
 const initialState = {
@@ -33,6 +33,18 @@ export default function profile(state = initialState, action) {
         case GET_CART[1]:
             return {...state, fetching: false, cart: action.payload};
         case GET_CART[2]:
+            return {...state, fetching: false};
+        case ADD_TO_CART[0]:
+            return {...state, fetching: true};
+        case ADD_TO_CART[1]:
+            return {...state, fetching: false};
+        case ADD_TO_CART[2]:
+            return {...state, fetching: false};
+        case REMOVE_IN_CART[0]:
+            return {...state, fetching: true};
+        case REMOVE_IN_CART[1]:
+            return {...state, fetching: false};
+        case REMOVE_IN_CART[2]:
             return {...state, fetching: false};
         default:
             return state;

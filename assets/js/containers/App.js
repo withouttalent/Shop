@@ -4,26 +4,29 @@ import Navigation from '../components/Navigation'
 import Items from '../components/Items';
 import {bindActionCreators} from 'redux';
 import * as AppActions from '../actions/AppActions';
-import Spinner from '../components/Spinner'
 
 class App extends Component {
+
+    // componentDidMount() {
+    //     this.props.subscribe(() => {
+    //         console.log(this.props)
+    //     })
+    // }
+
     render() {
         const { items, navigation, auth } = this.props;
         const { getItems, getCategories, selectFilter } = this.props.AppActions;
 
 
-        return <div id="root">
-            {console.log(items.fetching + '  ' + navigation.fetching + '  ' + auth.fetching)}
-            {(items.fetching === false) || (navigation.fetching === false) || (auth.fetching === false) ?
+        return <main>
+            <div id="root">
                 <div className="center">
                     <Navigation categories={navigation.categories} fetching={navigation.fetching}
                                 selectFilter={selectFilter} getCategories={getCategories} token={auth.token}/>
                     <Items fetching={items.fetching} items={items.items} getItems={getItems} token={auth.token}/>
                 </div>
-                :
-                <Spinner/>
-            }
         </div>
+        </main>
 
     }
 
