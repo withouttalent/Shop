@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default class Navigation extends Component {
     handleClick(e) {
-        console.log('filter/' + e.target.innerText);
+        console.log('filter/' + e.target.innerText + '/');
         this.props.selectFilter('filter/' + e.target.innerText, this.props.token)
     }
 
@@ -16,13 +16,15 @@ export default class Navigation extends Component {
     render() {
         const {categories, fetching} = this.props;
         return <div className="navigation">
-            {fetching ?
+            {fetching === true ?
                 undefined :
-            categories.length === undefined || 0 || null ?
+                categories.length === undefined ?
                 undefined
                 :
                 <div className="exsistens">
-                    {categories.map((category, id) => <Link key={id} to='/filter'><div key={id} onClick={::this.handleClick} className="navigation-category">{category.name}</div></Link> )}
+                    {categories.map((category, id) => <Link to="/">
+                        <div key={id} onClick={::this.handleClick} className="navigation-category">{category.name}</div>
+                    </Link>)}
                 </div>
             }
         </div>

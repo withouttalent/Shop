@@ -21,7 +21,8 @@ class Detail extends Component {
     }
 
     render() {
-        return <div id="root">
+        return <main>
+            <div id="root">
             <div className="center">
                 {(this.props.detail.item === undefined) ?
                     <div className="notc">Notning</div> :
@@ -43,6 +44,7 @@ class Detail extends Component {
             }
         </div>
         </div>
+        </main>
     }
 
 }

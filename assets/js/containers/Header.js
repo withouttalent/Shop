@@ -45,7 +45,8 @@ class Header extends Component {
 
     render() {
         return <header>
-            <div className="non-container">
+            <div className="logo">
+                Магазин
             </div>
             {(this.props.auth.isValid === false) ?
                 <div className="auth">
