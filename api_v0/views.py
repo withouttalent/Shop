@@ -24,7 +24,7 @@ class ListUsers(APIView):
 
     def get(self, request, format=None):
         print(request.user)
-        users = User.objects.all()
+        users = Profile.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 

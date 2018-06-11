@@ -5,14 +5,44 @@ import * as ProfileActions from '../actions/ProfileActions';
 import * as AppActions from '../actions/AppActions'
 import Cart from '../components/Cart';
 import Spinner from '../components/Spinner'
+import {Link, Route, Switch} from 'react-router-dom'
+import Message from '../components/Message'
+
 
 class Authentication extends Component {
     render() {
-        const {profile, auth} = this.props;
+        const {profile, auth, message} = this.props;
         const {getCart} = this.props.ProfileActions;
         return (profile.fetching === false) || (auth.fetching === false) ?
             <div className="content">
-                <Cart profile={profile} auth={auth} AppActions={this.props.AppActions} getCart={getCart}/>
+                <div className="wrap">
+                    <div className="user-content">
+                        <div className="inline">
+                            <Link to="/user/message">
+                                <div className="inline-actions">Сообщения</div>
+                            </Link>
+                            <div className="inline-actions">Покупки</div>
+                            <div className="inline-actions">Магазины</div>
+                            <Link to="/user/cart">
+                                <div className="inline-actions">Корзина</div>
+                            </Link>
+                            <div className="inline-actions">Выплата средств</div>
+                        </div>
+                        <div className="wrap-user">
+                            <div className="img-profile">
+                                <img src={profile.user.pic} alt="/"/>
+                            </div>
+                            <div className="username-cart">{profile.user.username}</div>
+                        </div>
+                    </div>
+                    <Switch>
+                        <Route path="/user/cart"
+                               render={() => <Cart profile={profile} auth={auth} AppActions={this.props.AppActions}
+                                                   getCart={getCart}/>}/>
+                        <Route path="/user/message"
+                               render={() => <Message message={message} AppActions={this.props.AppActions}/>}/>
+                    </Switch>
+                </div>
             </div>
             :
             <Spinner/>
@@ -24,7 +54,8 @@ class Authentication extends Component {
 export function mapStateToProps(state) {
     return {
         profile: state.profile,
-        auth: state.auth
+        auth: state.auth,
+        message: state.message,
     }
 }
 

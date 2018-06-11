@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'api_v0.apps.ApiV0Config',
+    # 'api_v0.apps.ApiV0Config',
     'backendAPI.apps.BackendapiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'api_v0',
     'rest_framework',
     'sorl.thumbnail'
 

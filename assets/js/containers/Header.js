@@ -50,7 +50,9 @@ class Header extends Component {
             </div>
             {(this.props.auth.isValid === false) ?
                 <div className="auth">
-                    <div className="signup">Sign up</div>
+                    <Link to="/user/signup">
+                        <div className="signup">Sign up</div>
+                    </Link>
                     <div onClick={::this.handleClick} className="login">log in</div>
                     {this.state.checkClick === true ?
                         <div className="form-login">
@@ -76,9 +78,12 @@ class Header extends Component {
                 <div className="auth-true">
                     <div onClick={::this.onClickLogOut} className="logout">Log Out</div>
                     {this.props.profile.fetching === false ?
-                        <Link to="/user">
-                            <div className="username">{this.props.profile.user.username}</div>
-                        </Link>
+                        this.props.profile.user.username !== undefined ?
+                            <Link to="/user">
+                                <div className="username">{this.props.profile.user.username}</div>
+                            </Link>
+                            :
+                            undefined
                         :
                         undefined}
                 </div>

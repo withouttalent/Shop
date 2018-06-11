@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
 
+from api_v0.models import *
 from .models import *
 
 
@@ -21,6 +21,7 @@ class Display(admin.ModelAdmin):
 class OrderInline(admin.StackedInline):
     model = OrderItem
     fk_name = "user"
+    extra = 0
 
 
 class ProfileInline(admin.StackedInline):
@@ -29,11 +30,24 @@ class ProfileInline(admin.StackedInline):
     fk_name = 'user'
 
 
+class ThreadInline(admin.StackedInline):
+    model = Thread
+    can_delete = False
+
+
+class MessageInline(admin.StackedInline):
+    model = Message
+    can_delete = False
+    fk_name = 'sender'
+    extra = 0
+
+
 class CustomUserAdmin(UserAdmin):
-    inlines = (ProfileInline, OrderInline)
+    inlines = (ProfileInline, OrderInline, MessageInline)
 
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Article, Display)
 admin.site.register(Categories)
+admin.site.register(Thread)

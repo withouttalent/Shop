@@ -26,14 +26,7 @@ export default class Cart extends Component {
         const {profile} = this.props;
         const url = "http://127.0.0.1:8000";
         return <div className="cart">
-            <div className="user-content">
-                <div className="wrap-user">
-                    <div className="img-profile">
-                        <img src={profile.user.pic} alt="/"/>
-                    </div>
-                    <div className="username-cart">{profile.user.username}</div>
-                </div>
-            </div>
+
             <div className="cart-content">
                 {profile.fetching === true ? undefined :
                     (profile.cart.length === 0) || (profile.cart.length === undefined) ?

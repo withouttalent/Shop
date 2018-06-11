@@ -38,9 +38,11 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="user.username")
+    pic = serializers.URLField(source='get_absolute_url')
     class Meta:
-        model = User
-        fields = ('username', 'email', 'first_name', 'is_active')
+        model = Profile
+        fields = ('username', 'pic')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -59,3 +61,4 @@ class UserCartSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ('id', 'count', 'user', 'article')
+

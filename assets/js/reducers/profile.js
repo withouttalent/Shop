@@ -4,12 +4,10 @@ import {ADD_TO_CART, GET_CART, GET_USER, REMOVE_IN_CART} from "../constans/Page"
 const initialState = {
     fetching: false,
     user: {
-        0: {
             username: undefined,
             email: undefined,
             first_name: undefined,
             is_active: false,
-        }
     },
     cart: {
         // 0 : {

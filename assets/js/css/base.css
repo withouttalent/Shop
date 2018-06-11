@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 body {
     margin: 0;
     padding: 0;
+    font-family: Oswald;
 }
 header {
     height: 50px;
@@ -18,7 +21,7 @@ footer {
     background-color: #3c3b36;
 }
 #root {
-    width: 80%;
+    width: 65%;
     min-height: 1120px;
     border: 4px solid #000;
 }
@@ -37,7 +40,7 @@ footer {
 }
 
 .row {
-    width: 70%;
+    width: 68%;
     height: 1120px;
     position: relative;
     margin-right: 20px;
@@ -50,9 +53,9 @@ footer {
     flex-wrap: wrap;
     align-content: baseline;
     justify-content: center;
-    /*flex-basis: 235px;*/
     padding-right: 20px;
 }
+
 .item {
     width: 235px;
     margin-top: 20px;
@@ -71,13 +74,16 @@ footer {
     justify-items: center;
     align-items: center;
 }
+
 .bottom-item {
     height: 75px;
 }
+
 .title-item {
     height: 75px;
     overflow: hidden;
 }
+
 .price-item {
     display: inline-block;
     background-color: #d2ff75;
@@ -88,6 +94,7 @@ footer {
     line-height: 12px;
     font-size: 12px;
 }
+
 .buy {
     display: inline-block;
     background-color: #b6b6b6;
@@ -148,6 +155,7 @@ a {
 
 .signup, .login, .logout, .username {
     color: #FFFFFF;
+    cursor: pointer;
     font-size: 20px;
     float: right;
     text-align: center;
@@ -156,8 +164,8 @@ a {
 }
 
 .form-login {
-    position: relative;
-    float: right;
+    position: absolute;
+    right: 10%;
     margin-top: 60px;
     z-index: 9999;
     margin-right: -135px;
@@ -179,23 +187,85 @@ input {
 }
 
 .cart {
-    width: 100%;
+    width: 80%;
     display: flex;
 }
 
+/*#################################MESSAGE##########################################*/
+
+.message-wrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.user-wrap {
+    display: inline-block;
+    margin-left: 10px;
+    border: 1px solid #beffbb;
+    text-align: center;
+    height: 27px;
+    width: 85px;
+    margin-top: 12px;
+}
+
+.add-thread {
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #b4b4b4;
+}
+
+.exist-thread {
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    border-right: 2px solid #000000;
+}
+
+.message-thread {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+}
+
+/*################################MESSAGE###########################################*/
+
 .user-content {
     width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #787878;
+    background: #22485d;
     color: #FFF;
     font-size: 24px;
     text-transform: uppercase;
 }
 
+.wrap {
+    width: 100%;
+    display: flex;
+}
+
+.inline {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+.inline-actions {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    background-color: #08181f;
+    border-bottom: 2px solid #dfdfdf;
+}
+
+.inline-actions:hover {
+    background-color: #22485d;
+}
+
+
 .wrap-user {
     position: relative;
+    margin-top: 60px;
 }
 
 .img-profile {
@@ -514,4 +584,5 @@ button.button-buy:hover {
     opacity: 0.8;
     z-index: 9999;
 }
+
 

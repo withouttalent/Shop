@@ -11,6 +11,7 @@ import {
     GET_ITEMS_ERROR,
     GET_ITEMS_REQUEST,
     GET_ITEMS_SUCCESS,
+    GET_USERS,
     REMOVE_IN_CART
 } from "../constans/Page";
 import {apiAction, fetchApi} from "./actionCreators";
@@ -74,4 +75,16 @@ export function deleteArticleInCart(id, token) {
             })
             .catch(error => dispatch({type: REMOVE_IN_CART[2]}))
     }
+}
+
+
+export function getUsers(token) {
+    return (dispatch) => {
+        dispatch({type: GET_USERS[0]});
+        axios.get('http://127.0.0.1:8000/api/v0/users/', {headers: {'Authorization': 'JWT ' + token}})
+            .then(response => response.status === 200 ? response.data : undefined)
+            .then(data => dispatch({type: GET_USERS[1], payload: data}))
+            .catch(error => dispatch({type: GET_USERS[2]}))
+    }
+
 }
