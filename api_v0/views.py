@@ -29,6 +29,38 @@ class ListUsers(APIView):
         return Response(serializer.data)
 
 
+class Threads(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        queryset = User.objects.get(username=request.user).thread_set.all()
+        serializer = ThreadSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        try:
+            user = User.objects.get(username=request.user)
+            participants = User.objects.get(pk=request.data['id'])
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            queryset = Thread.objects.create()
+            queryset.participants.add(user, participants)
+            return Response(status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class Thread(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, id, format=None):
+        queryset = User.objects.get(username=request.user).thread_set.get(pk=id).message_set.all()
+        serializer = ChatSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+
 class ListCart(APIView):
     permissions_classes = (permissions.IsAuthenticated,)
 

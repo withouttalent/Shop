@@ -7,10 +7,12 @@ import {
     GET_CATEGORIES_ERROR,
     GET_CATEGORIES_REQUEST,
     GET_CATEGORIES_SUCCESS,
+    GET_CHATS,
     GET_DETAIL_ARTICLE,
     GET_ITEMS_ERROR,
     GET_ITEMS_REQUEST,
     GET_ITEMS_SUCCESS,
+    GET_MESSAGES,
     GET_USERS,
     REMOVE_IN_CART
 } from "../constans/Page";
@@ -88,3 +90,26 @@ export function getUsers(token) {
     }
 
 }
+
+export function getChats(token) {
+    return (dispatch) => {
+        dispatch({type: GET_CHATS[0]});
+        axios.get('http://127.0.0.1:8000/api/v0/threads/', {headers: {'Authorization': 'JWT ' + token}})
+            .then(response => response.status === 200 ? response.data : undefined)
+            .then(data => dispatch({type: GET_CHATS[1], payload: data}))
+            .catch(error => dispatch({type: GET_CHATS[2]}))
+    }
+
+}
+
+
+export function getMessages(token, id) {
+    return (dispatch) => {
+        dispatch({type: GET_MESSAGES[0]});
+        axios.get('http://127.0.0.1:8000/api/v0/thread/' + id + '/', {headers: {'Authorization': 'JWT ' + token}})
+            .then(response => response.status === 200 ? response.data : undefined)
+            .then(data => dispatch({type: GET_MESSAGES[1], payload: data}))
+            .catch(error => dispatch({type: GET_MESSAGES[2]}))
+    }
+}
+

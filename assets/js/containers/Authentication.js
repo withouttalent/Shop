@@ -40,7 +40,8 @@ class Authentication extends Component {
                                render={() => <Cart profile={profile} auth={auth} AppActions={this.props.AppActions}
                                                    getCart={getCart}/>}/>
                         <Route path="/user/message"
-                               render={() => <Message message={message} AppActions={this.props.AppActions}/>}/>
+                               render={() => <Message message={message} auth={auth}
+                                                      AppActions={this.props.AppActions}/>}/>
                     </Switch>
                 </div>
             </div>

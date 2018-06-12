@@ -2,6 +2,7 @@ from rest_framework import serializers
 from sorl_thumbnail_serializer.fields import HyperlinkedSorlImageField
 
 from backendAPI.models import *
+from .models import *
 
 
 class CategoriesSerializer(serializers.ModelSerializer):
@@ -39,10 +40,11 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source="user.username")
+    user_id = serializers.IntegerField(source="user.id")
     pic = serializers.URLField(source='get_absolute_url')
     class Meta:
         model = Profile
-        fields = ('username', 'pic')
+        fields = ('user_id', 'username', 'pic')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -62,3 +64,26 @@ class UserCartSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields = ('id', 'count', 'user', 'article')
 
+
+class UserWrap(serializers.ModelSerializer):
+    pic = serializers.URLField(source="profile.get_absolute_url")
+
+    class Meta:
+        model = User
+        fields = ('id', "username", 'pic')
+
+
+class ThreadSerializer(serializers.ModelSerializer):
+    participants = UserWrap(many=True, read_only=True)
+
+    class Meta:
+        model = Thread
+        fields = ('id', 'participants')
+
+
+class ChatSerializer(serializers.ModelSerializer):
+    sender = serializers.CharField(source="sender.username")
+
+    class Meta:
+        model = Message
+        fields = ('id', 'text', 'datetime', 'sender', 'thread')
