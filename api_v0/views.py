@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+import json
 from .serializers import *
 
 
@@ -51,14 +52,38 @@ class Threads(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class Thread(APIView):
+class AddThread(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self):
+        pass
+
+
+    def post(self, request, format=None):
+        if request.data["message"]:
+            try:
+                user = User.objects.get(username=request.user)
+                thread = Thread.objects.get(pk=request.data['thread'])
+            except:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            try:
+                message = Message.objects.all()
+                message.create(text=request.data['message'], sender=user, thread=thread)
+                return Response(status=status.HTTP_200_OK)
+            except:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+class ThreadView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, id, format=None):
         queryset = User.objects.get(username=request.user).thread_set.get(pk=id).message_set.all()
         serializer = ChatSerializer(queryset, many=True)
         return Response(serializer.data)
-
 
 
 class ListCart(APIView):
@@ -70,6 +95,7 @@ class ListCart(APIView):
         return Response(serializers.data)
 
     def post(self, request, format=None):
+        print(request.data)
         article = Article.objects.get(pk=request.data['id'])
         User.objects.get(username=request.user).orderitem_set.create(article=article, count=request.data['count'])
         return Response(status=status.HTTP_201_CREATED)

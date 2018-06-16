@@ -23,16 +23,6 @@ export class REPL extends Component {
         };
     }
 
-    readyState() {
-        const isReady = store.getState();
-        const {items, navigation, auth, detail, profile} = isReady;
-        if ((items.fetching === false) && (navigation.fetching === false) && (detail.fetching === false) && (auth.fetching === false) && (profile.fetching === false)) {
-            this.setState({ready: !this.state.ready})
-        } else {
-            this.state.ready === true ? this.setState({ready: false}) : undefined
-        }
-    }
-
 
     render() {
 

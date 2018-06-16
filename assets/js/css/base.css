@@ -244,6 +244,24 @@ input {
 
 }
 
+.message-input {
+    float: right;
+    margin-top: 52vh;
+    height: 30px;
+}
+
+.send-msg {
+    width: 65px;
+    height: 36px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #22485d;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    margin-top: 52vh;
+}
+
 .message-text {
 
 }

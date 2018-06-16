@@ -4,11 +4,14 @@ import rootReducer from '../reducers'
 import thunk from 'redux-thunk'
 import ReduxWebSocketBridge from 'redux-websocket-bridge'
 import {createLogger} from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import { mySaga } from './sagas/index'
 
 
 export default function configureStore() {
     const logger = createLogger();
-    const store = createStore(rootReducer, {}, applyMiddleware(thunk, logger, apiMiddleware, ReduxWebSocketBridge("ws://127.0.0.1:8888")));
+    // const sagaMiddleware = createSagaMiddleware();
+    const store = createStore(rootReducer, {}, applyMiddleware(thunk, logger, apiMiddleware));
     return store
 }
 

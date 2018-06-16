@@ -21,7 +21,8 @@ urlpatterns = [
     path('user-cart/', ListCart.as_view()),
     path('user-cart/remove/<int:id>/', RemoveInCart.as_view()),
     path('threads/', Threads.as_view()),
-    path('thread/<int:id>/', Thread.as_view()),
+    path('thread/<int:id>/', ThreadView.as_view()),
+    path('thread/add/', AddThread.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

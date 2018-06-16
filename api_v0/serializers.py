@@ -14,7 +14,7 @@ class CategoriesSerializer(serializers.ModelSerializer):
 
 
 class ArticlePreviewSerializer(serializers.ModelSerializer):
-    pics = HyperlinkedSorlImageField('156x156',
+   pics = HyperlinkedSorlImageField('156x156',
                                      options={"crop": "noop"},
                                      source='get_thumbnail_url',
                                      read_only=True)

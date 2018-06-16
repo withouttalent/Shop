@@ -1,11 +1,14 @@
-import {GET_CHATS, GET_MESSAGES, GET_USERS} from "../constans/Page";
-
+import {CONNECTION, GET_CHATS, GET_MESSAGES, GET_USERS} from "../constans/Page";
 
 const initialState = {
     fetching: false,
+    connection: false,
+    current_thread: undefined,
+    error: undefined,
     users: {},
     dialog: {},
     messages: {},
+    empty: {},
 };
 
 
@@ -24,11 +27,15 @@ export default function message(state = initialState, action) {
         case GET_CHATS[2]:
             return {...state, fetching: false};
         case GET_MESSAGES[0]:
-            return {...state, fetching: true, messages: undefined};
+            return {...state, fetching: true, messages: undefined, current_thread:action.payload};
         case GET_MESSAGES[1]:
             return {...state, fetching: false, messages: action.payload};
         case GET_MESSAGES[2]:
             return {...state, fetching: false, messages: undefined};
+        case CONNECTION[0]:
+            return {...state, connection:true};
+        case "GET_DATA":
+            return {...state, error:action.payload};
         default:
             return state
     }

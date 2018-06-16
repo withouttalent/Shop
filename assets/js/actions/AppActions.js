@@ -1,5 +1,5 @@
 import {
-    ADD_TO_CART,
+    ADD_TO_CART, CONNECTION,
     FILTER_CATEGORIES_ERROR,
     FILTER_CATEGORIES_REQUEST,
     FILTER_CATEGORIES_SUCCESS,
@@ -18,6 +18,14 @@ import {
 } from "../constans/Page";
 import {apiAction, fetchApi} from "./actionCreators";
 import axios from "axios";
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+
+
+
+
+
+
+
 
 
 export const GET_ARTICLES = [GET_ITEMS_REQUEST, GET_ITEMS_SUCCESS, GET_ITEMS_ERROR];
@@ -105,11 +113,26 @@ export function getChats(token) {
 
 export function getMessages(token, id) {
     return (dispatch) => {
-        dispatch({type: GET_MESSAGES[0]});
+        dispatch({type: GET_MESSAGES[0], payload: id});
         axios.get('http://127.0.0.1:8000/api/v0/thread/' + id + '/', {headers: {'Authorization': 'JWT ' + token}})
             .then(response => response.status === 200 ? response.data : undefined)
-            .then(data => dispatch({type: GET_MESSAGES[1], payload: data}))
+            .then(data => dispatch({type: GET_MESSAGES[1], payload: data }))
             .catch(error => dispatch({type: GET_MESSAGES[2]}))
     }
 }
 
+
+export function openConnect(thread, message, token) {
+    return (dispatch) => {
+        dispatch({type:CONNECTION[0]});
+        const socket = new WebSocket("ws://127.0.0.1:8888");
+        socket.onopen = function () {
+            socket.send(JSON.stringify({thread:thread, message:message, token:token}))
+        };
+        socket.onmessage = function (evt) {
+            return (dispatch) => {
+                dispatch({type: "GET_DATA", payload:evt.data})
+            }
+        }
+    }
+}

@@ -7,6 +7,7 @@ import Cart from '../components/Cart';
 import Spinner from '../components/Spinner'
 import {Link, Route, Switch} from 'react-router-dom'
 import Message from '../components/Message'
+import {GET_USERS} from "../constans/Page";
 
 
 class Authentication extends Component {
@@ -41,7 +42,7 @@ class Authentication extends Component {
                                                    getCart={getCart}/>}/>
                         <Route path="/user/message"
                                render={() => <Message message={message} auth={auth}
-                                                      AppActions={this.props.AppActions}/>}/>
+                                                      AppActions={this.props.AppActions} dispatch={this.props.dispatch} />}/>
                     </Switch>
                 </div>
             </div>
@@ -63,7 +64,8 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return {
         ProfileActions: bindActionCreators(ProfileActions, dispatch),
-        AppActions: bindActionCreators(AppActions, dispatch)
+        AppActions: bindActionCreators(AppActions, dispatch),
+        dispatch: dispatch
     }
 }
 
