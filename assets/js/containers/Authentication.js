@@ -8,34 +8,19 @@ import Spinner from '../components/Spinner'
 import {Link, Route, Switch} from 'react-router-dom'
 import Message from '../components/Message'
 import {GET_USERS} from "../constans/Page";
+import Profile from '../components/Profile'
+import { withRouter } from 'react-router'
+
+
 
 
 class Authentication extends Component {
     render() {
         const {profile, auth, message} = this.props;
         const {getCart} = this.props.ProfileActions;
-        return (profile.fetching === false) || (auth.fetching === false) ?
-            <div className="content">
+        return <div className="content">
                 <div className="wrap">
-                    <div className="user-content">
-                        <div className="inline">
-                            <Link to="/user/message">
-                                <div className="inline-actions">Сообщения</div>
-                            </Link>
-                            <div className="inline-actions">Покупки</div>
-                            <div className="inline-actions">Магазины</div>
-                            <Link to="/user/cart">
-                                <div className="inline-actions">Корзина</div>
-                            </Link>
-                            <div className="inline-actions">Выплата средств</div>
-                        </div>
-                        <div className="wrap-user">
-                            <div className="img-profile">
-                                <img src={profile.user.pic} alt="/"/>
-                            </div>
-                            <div className="username-cart">{profile.user.username}</div>
-                        </div>
-                    </div>
+                        <Profile profile={profile} auth={auth}/>
                     <Switch>
                         <Route path="/user/cart"
                                render={() => <Cart profile={profile} auth={auth} AppActions={this.props.AppActions}
@@ -46,8 +31,6 @@ class Authentication extends Component {
                     </Switch>
                 </div>
             </div>
-            :
-            <Spinner/>
 
 
     }

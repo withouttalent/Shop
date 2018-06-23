@@ -2,6 +2,7 @@ import {GET_DETAIL_ARTICLE} from "../constans/Page";
 
 const initialState = {
     fetching: false,
+    hi: true,
     item: {
         // 0: {
         //     id: 0,

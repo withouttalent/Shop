@@ -8,7 +8,7 @@ const initialState = {
     users: {},
     dialog: {},
     messages: {},
-    empty: {},
+    empty: undefined,
 };
 
 
@@ -34,8 +34,8 @@ export default function message(state = initialState, action) {
             return {...state, fetching: false, messages: undefined};
         case CONNECTION[0]:
             return {...state, connection:true};
-        case "GET_DATA":
-            return {...state, error:action.payload};
+        case CONNECTION[1]:
+            return { ...state, empty: action.payload };
         default:
             return state
     }

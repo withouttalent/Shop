@@ -52,10 +52,12 @@ export default class Message extends Component {
                         <div className="message-text">{msg.text}</div>
                     </div>)}
                         </div>
-                        <form onSubmit={this.clickToSendMessage.bind(this, message.current_thread)} >
-                            <input ref={(node) => {this.message = node}} placeholder="Напишите ваше сообщение..." type="text" className="message-input"/>
-                            <input type="submit" className="send-msg" name="Отправить" />
-                        </form>
+                        <div className="send-msg-form">
+                            <form onSubmit={this.clickToSendMessage.bind(this, message.current_thread)} >
+                                <input ref={(node) => {this.message = node}} required="true" placeholder="Напишите ваше сообщение..." type="text" className="message-input"/>
+                                <button className="send-msg" name="Отправить" >Отправить</button>
+                            </form>
+                        </div>
 
                     </div>
                 }

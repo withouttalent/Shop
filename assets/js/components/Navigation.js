@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default class Navigation extends Component {
     handleClick(e) {
-        console.log('filter/' + e.target.innerText + '/');
+        console.log("say")
         this.props.selectFilter('filter/' + e.target.innerText, this.props.token)
     }
 

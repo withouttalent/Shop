@@ -27,7 +27,6 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 
 
-
 export const GET_ARTICLES = [GET_ITEMS_REQUEST, GET_ITEMS_SUCCESS, GET_ITEMS_ERROR];
 export const GET_CATEGORIES = ['GET_CATEGORIES_REQUEST', 'GET_CATEGORIES_SUCCESS', 'GET_CATEGORIES_ERROR'];
 export const FILTER_ITEM = [FILTER_CATEGORIES_REQUEST, FILTER_CATEGORIES_SUCCESS, FILTER_CATEGORIES_ERROR];
@@ -122,17 +121,27 @@ export function getMessages(token, id) {
 }
 
 
-export function openConnect(thread, message, token) {
+
+export function openConnect() {
     return (dispatch) => {
         dispatch({type:CONNECTION[0]});
-        const socket = new WebSocket("ws://127.0.0.1:8888");
-        socket.onopen = function () {
-            socket.send(JSON.stringify({thread:thread, message:message, token:token}))
-        };
-        socket.onmessage = function (evt) {
-            return (dispatch) => {
-                dispatch({type: "GET_DATA", payload:evt.data})
-            }
-        }
     }
 }
+
+
+
+// export function openConnect(thread, message, token) {
+//     return (dispatch) => {
+//         dispatch({type:CONNECTION[0]});
+//         const socket = new WebSocket("ws://127.0.0.1:8888");
+//         socket.onopen = function () {
+//             socket.send(JSON.stringify({thread:thread, message:message, token:token}))
+//         };
+//         socket.onmessage = function (evt) {
+//             return (dispatch) => {
+//                 dispatch({type: "GET_DATA", payload:evt.data})
+//             }
+//         }
+//     }
+// }
+//

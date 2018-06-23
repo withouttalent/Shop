@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as LoginActions from '../actions/LoginActions'
 import {Link} from 'react-router-dom'
 
-
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +16,7 @@ class Header extends Component {
         const token = localStorage.getItem('token');
         const refresh = localStorage.getItem('refresh');
         this.props.LoginActions.checkToken(token, refresh);
+	console.log("hi")
     }
 
     // componentDidMount() {
@@ -45,9 +45,11 @@ class Header extends Component {
 
     render() {
         return <header>
+            <Link to="/">
             <div className="logo">
                 Магазин
             </div>
+            </Link>
             {(this.props.auth.isValid === false) ?
                 <div className="auth">
                     <Link to="/user/signup">

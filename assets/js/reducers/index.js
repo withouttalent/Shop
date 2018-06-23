@@ -6,6 +6,7 @@ import profile from './profile'
 import detail from './detail'
 import message from './message'
 
+
 export default combineReducers({
     items,
     navigation,

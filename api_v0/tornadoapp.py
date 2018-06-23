@@ -1,15 +1,26 @@
 import tornado
 from tornado import websocket, web, ioloop, httpclient, autoreload
 from tornado.web import asynchronous, gen
-import pika
 from django.contrib.auth.models import User
 from api_v0.models import *
-from django.http import QueryDict
 import json
+import redis
+
 
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
+
     def open(self):
         print("WebSocket opened")
+        redis_client = redis.StrictRedis()
+        sub = redis_client.pubsub()
+        sub.subscribe('channel')
+        for message in sub.listen():
+            print(message.data)
+            self.write_message(message.data)
+
+
+    def send_new_message(self, evt):
+        print(evt.body)
 
     def check_origin(self, origin):
         return True
@@ -20,6 +31,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         self.message = json_data['message']
         self.thread = json_data['thread']
         self.post()
+
     @asynchronous
     def post(self):
         http_client = httpclient.AsyncHTTPClient()
@@ -36,23 +48,16 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         print("WebSocket closed")
 
 
-# class ArticleHandler(tornado.web.RequestHandler):
-#     @asynchronous
-#     def get(self):
-#         http = httpclient.AsyncHTTPClient()
-#         response = http.fetch("http://127.0.0.1:8000/api/v0/articles/", self.parse)
-#
-#     def parse(self, response):
-#         json_dec = self.decode_argument(response.body)
-#         self.write(json_dec)
-#         print(json_dec)
-#         self.finish()
-
+class ArticleHandler(tornado.web.RequestHandler):
+    def get(self):
+        r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
+        r.set('foo', 'bar')
+        self.write(r.get('foo'))
 
 
 application = tornado.web.Application([
     (r"/", EchoWebSocket),
-    # (r"/articles", ArticleHandler),
+    (r"/articles", ArticleHandler),
 ])
 application.autoreload = True
 application.listen(8888, '127.0.0.1')
