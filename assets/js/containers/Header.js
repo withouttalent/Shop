@@ -16,7 +16,7 @@ class Header extends Component {
         const token = localStorage.getItem('token');
         const refresh = localStorage.getItem('refresh');
         this.props.LoginActions.checkToken(token, refresh);
-	console.log("hi")
+	console.log("h")
     }
 
     // componentDidMount() {
@@ -78,7 +78,7 @@ class Header extends Component {
                 </div>
                 :
                 <div className="auth-true">
-                    <div onClick={::this.onClickLogOut} className="logout">Log Out</div>
+                    <Link to="/"><div onClick={::this.onClickLogOut} className="logout">Log Out</div></Link>
                     {this.props.profile.fetching === false ?
                         this.props.profile.user.username !== undefined ?
                             <Link to="/user">

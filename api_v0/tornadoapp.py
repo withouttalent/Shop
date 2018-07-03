@@ -5,28 +5,30 @@ from django.contrib.auth.models import User
 from api_v0.models import *
 import json
 import redis
-
+import aioredis
+import aioredis
+import asyncio
+from tornado.concurrent import Future
+connections = []
 
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
 
-    def open(self):
+    async def open(self):
         print("WebSocket opened")
-        redis_client = redis.StrictRedis()
-        sub = redis_client.pubsub()
-        sub.subscribe('channel')
-        for message in sub.listen():
-            print(message.data)
-            self.write_message(message.data)
-
-
-    def send_new_message(self, evt):
-        print(evt.body)
+        connections.append(self)
+        self.connection = await aioredis.create_redis('redis://127.0.0.1')
+        channel = await self.connection.subscribe('channel')
+        print(channel)
+        ch1 = channel[0]
+        self.tsk = await asyncio.ensure_future(consumer(ch1))
 
     def check_origin(self, origin):
         return True
 
     def on_message(self, data):
         json_data = json.loads(data)
+        print(data)
+        print(connections)
         self.token = json_data['token']
         self.message = json_data['message']
         self.thread = json_data['thread']
@@ -43,26 +45,34 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         request = http_client.fetch(request=url, method="POST", headers=headers, body=body)
         self.write_message("OK")
         http_client.close()
-        print("Thing")
+
+
     def on_close(self):
+        self.connection.unsubscribe('channel')
+        self.connection.close()
         print("WebSocket closed")
+        connections.remove(self)
 
 
-class ArticleHandler(tornado.web.RequestHandler):
-    def get(self):
-        r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
-        r.set('foo', 'bar')
-        self.write(r.get('foo'))
+async def consumer(channel):
+    print("now work here")
+    print(connections)
+    while (await channel.wait_message()):
+        msg = await channel.get(encoding='utf-8')
+        for connection in connections:
+            print(msg)
+            connection.write_message(msg)
+
 
 
 application = tornado.web.Application([
     (r"/", EchoWebSocket),
-    (r"/articles", ArticleHandler),
 ])
 application.autoreload = True
 application.listen(8888, '127.0.0.1')
 tornado.autoreload.start()
 try:
-    tornado.ioloop.IOLoop.current().start()
+    loop = tornado.ioloop.IOLoop.current()
+    loop.start()
 except KeyboardInterrupt:
     tornado.ioloop.IOLoop.current().stop()

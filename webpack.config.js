@@ -27,7 +27,7 @@ module.exports = {
     plugins: [
         //tells webpack where to store data about your bundles.
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin()
+        // new webpack.optimize.OccurrenceOrderPlugin()
     ],
     
     module: {

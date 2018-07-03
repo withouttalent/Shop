@@ -1,4 +1,4 @@
-import {CONNECTION, GET_CHATS, GET_MESSAGES, GET_USERS} from "../constans/Page";
+import {CONNECTION, GET_CHATS, GET_MESSAGES, GET_USERS, MESSAGE} from "../constans/Page";
 
 const initialState = {
     fetching: false,
@@ -35,7 +35,12 @@ export default function message(state = initialState, action) {
         case CONNECTION[0]:
             return {...state, connection:true};
         case CONNECTION[1]:
-            return { ...state, empty: action.payload };
+            return { ...state};
+        case MESSAGE[0]:
+            const msg = state.messages;
+            return {...state, messages:msg.join(action.payload) };
+        case MESSAGE[1]:
+            return {...state, empty: action.payload };
         default:
             return state
     }

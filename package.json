@@ -1,6 +1,6 @@
 {
-  "name": "drf_react",
-  "version": "0.0.2",
+  "name": "drfReact",
+  "version": "0.1.1",
   "description": "Django and React",
   "main": "index.js",
   "scripts": {
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "react-bootstrap": "^0.30.7"
+    "react-bootstrap": "^0.30.7",
+    "redux-websocket-middleware": "^1.0.0"
   }
 }

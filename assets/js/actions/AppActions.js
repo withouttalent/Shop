@@ -130,6 +130,7 @@ export function openConnect() {
 
 
 
+
 // export function openConnect(thread, message, token) {
 //     return (dispatch) => {
 //         dispatch({type:CONNECTION[0]});

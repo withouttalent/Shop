@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
-import {CONNECTION, GET_USERS} from "../constans/Page";
+import {CONNECTION, GET_USERS, MESSAGE} from "../constans/Page";
 
 
 export default class Message extends Component {
 
     componentWillMount() {
         const token = localStorage.getItem('token');
+        this.props.dispatch({type:CONNECTION[0]});
         this.props.AppActions.getUsers(token);
         this.props.AppActions.getChats(token);
+
     }
 
     getCurrentChat(id, e) {
@@ -21,7 +23,7 @@ export default class Message extends Component {
         const thread_id = thread;
         const message = this.message.value;
         const token = this.props.auth.token;
-        this.props.AppActions.openConnect(thread, message, token)
+        this.props.dispatch({type:MESSAGE[1], payload:JSON.stringify({ thread, message, token }) })
 
     }
 
