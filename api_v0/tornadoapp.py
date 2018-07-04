@@ -30,7 +30,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
             type = json_data['type']
             await self.post(message, thread, token)
         if json_data['type'] == "SUBSCRIBE_THREAD":
-            await self.setup_redis(json_data)
+            asyncio.ensure_future(self.setup_redis(json_data))
 
 
     async def setup_redis(self, data):
@@ -58,15 +58,20 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         connections.remove(self)
 
 
+
+class RedisPub:
+    def __init__(self):
+        r = redis.StrictRedis()
+
+
 async def consumer(channel):
     print("now work here")
     print(connections)
     while (await channel.wait_message()):
-        msg = await channel.get(encoding='utf-8')
+        msg = await channel.get()
         for connection in connections:
-            print(msg)
-            connection.write_message(msg)
-
+            print(connection)
+            await connection.write_message(msg)
 
 
 application = tornado.web.Application([

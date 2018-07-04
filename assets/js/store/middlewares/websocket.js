@@ -1,5 +1,5 @@
 import * as types from '../../constans/Page'
-
+import JSON5 from 'json5'
 
 let socket = null;
 
@@ -25,7 +25,7 @@ export default store => next => action => {
                     socket.send(JSON.stringify({id:action.payload, type:"SUBSCRIBE_THREAD"}))
                 };
                 socket.onmessage = (evt) => {
-                    const msg = JSON.parse(evt.data);
+                    const msg = JSON5.parse(evt.data);
                     store.dispatch({type:types.MESSAGE[0], payload:msg})
                 };
                 return next(action);
