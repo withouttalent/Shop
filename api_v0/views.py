@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+import redis
 import json
 from .serializers import *
 
@@ -28,7 +28,7 @@ class ListUsers(APIView):
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
-
+########################################################################################################################
 class Threads(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -51,7 +51,7 @@ class Threads(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class AddThread(APIView):
+class AddMessageInThread(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     def get(self):
         pass
@@ -64,12 +64,19 @@ class AddThread(APIView):
                 thread = Thread.objects.get(pk=request.data['thread'])
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            try:
-                message = Message.objects.all()
-                message.create(text=request.data['message'], sender=user, thread=thread)
-                return Response(status=status.HTTP_200_OK)
-            except:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+            # try:
+            message = Message.objects.all()
+            r = redis.StrictRedis()
+            message.create(text=request.data['message'], sender=user, thread=thread)
+            last_msg = thread.message_set.latest("id")
+            r.publish("".join("thread_" + str(thread.id)), {"id":last_msg.id,
+                                                       "text":last_msg.text,
+                                                       "datetime":last_msg.datetime,
+                                                       "sender":last_msg.sender,
+                                                       "thread":last_msg.thread})
+            return Response(status=status.HTTP_200_OK)
+            # except:
+            #     return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -84,7 +91,7 @@ class ThreadView(APIView):
         serializer = ChatSerializer(queryset, many=True)
         return Response(serializer.data)
 
-
+########################################################################################################################
 class ListCart(APIView):
     permissions_classes = (permissions.IsAuthenticated,)
 

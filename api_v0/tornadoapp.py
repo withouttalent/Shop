@@ -16,39 +16,43 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     async def open(self):
         print("WebSocket opened")
         connections.append(self)
-        self.connection = await aioredis.create_redis('redis://127.0.0.1')
-        channel = await self.connection.subscribe('channel')
-        print(channel)
-        ch1 = channel[0]
-        self.tsk = await asyncio.ensure_future(consumer(ch1))
 
     def check_origin(self, origin):
         return True
 
-    def on_message(self, data):
-        json_data = json.loads(data)
+    async def on_message(self, data):
         print(data)
-        print(connections)
-        self.token = json_data['token']
-        self.message = json_data['message']
-        self.thread = json_data['thread']
-        self.post()
+        json_data = json.loads(data)
+        if json_data['type'] == "SEND_MESSAGE":
+            token = json_data['token']
+            message = json_data['message']
+            thread = json_data['thread']
+            type = json_data['type']
+            await self.post(message, thread, token)
+        if json_data['type'] == "SUBSCRIBE_THREAD":
+            await self.setup_redis(json_data)
 
-    @asynchronous
-    def post(self):
+
+    async def setup_redis(self, data):
+        self.connection = await aioredis.create_redis('redis://127.0.0.1')
+        self.thread = "".join("thread_" + str(data['id']))
+        channel = await self.connection.subscribe(self.thread)
+        print(channel)
+        ch1 = channel[0]
+        await asyncio.ensure_future(consumer(ch1))
+
+    async def post(self, message, thread, token):
         http_client = httpclient.AsyncHTTPClient()
         url = "http://127.0.0.1:8000/api/v0/thread/add/"
-        headers = {'Authorization': 'JWT ' + self.token, "Content-Type":"application/json"}
-        context = {'thread':self.thread, 'message':self.message}
+        headers = {'Authorization': 'JWT ' + token, "Content-Type":"application/json"}
+        context = {'thread':thread, 'message':message}
         body = json.dumps(context)
-        print(body)
-        request = http_client.fetch(request=url, method="POST", headers=headers, body=body)
-        self.write_message("OK")
+        request = await http_client.fetch(request=url, method="POST", headers=headers, body=body)
         http_client.close()
 
 
     def on_close(self):
-        self.connection.unsubscribe('channel')
+        self.connection.unsubscribe(self.thread)
         self.connection.close()
         print("WebSocket closed")
         connections.remove(self)

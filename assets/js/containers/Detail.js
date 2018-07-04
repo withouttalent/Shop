@@ -25,7 +25,7 @@ class Detail extends Component {
             <div id="root">
             <div className="center">
                 {(this.props.detail.item === undefined) ?
-                    <div className="notc">Notning</div> :
+                    <div className="notc">Nothing</div> :
                     <div className="item-detail">
                         <div className="title-detail">{this.props.detail.item.title}</div>
                         <div className="img-container">

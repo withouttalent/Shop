@@ -112,7 +112,7 @@ export function getChats(token) {
 
 export function getMessages(token, id) {
     return (dispatch) => {
-        dispatch({type: GET_MESSAGES[0], payload: id});
+        dispatch({type: GET_MESSAGES[0], payload: {id:id, type:"SUBSCRIBE_THREAD"}});
         axios.get('http://127.0.0.1:8000/api/v0/thread/' + id + '/', {headers: {'Authorization': 'JWT ' + token}})
             .then(response => response.status === 200 ? response.data : undefined)
             .then(data => dispatch({type: GET_MESSAGES[1], payload: data }))

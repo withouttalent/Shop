@@ -16,7 +16,6 @@ class Header extends Component {
         const token = localStorage.getItem('token');
         const refresh = localStorage.getItem('refresh');
         this.props.LoginActions.checkToken(token, refresh);
-	console.log("h")
     }
 
     // componentDidMount() {

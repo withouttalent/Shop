@@ -22,7 +22,7 @@ urlpatterns = [
     path('user-cart/remove/<int:id>/', RemoveInCart.as_view()),
     path('threads/', Threads.as_view()),
     path('thread/<int:id>/', ThreadView.as_view()),
-    path('thread/add/', AddThread.as_view()),
+    path('thread/add/', AddMessageInThread.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

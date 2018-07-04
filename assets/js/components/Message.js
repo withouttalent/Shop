@@ -6,7 +6,6 @@ export default class Message extends Component {
 
     componentWillMount() {
         const token = localStorage.getItem('token');
-        this.props.dispatch({type:CONNECTION[0]});
         this.props.AppActions.getUsers(token);
         this.props.AppActions.getChats(token);
 
@@ -14,6 +13,7 @@ export default class Message extends Component {
 
     getCurrentChat(id, e) {
         const token = this.props.auth.token;
+        this.props.dispatch({type:CONNECTION[0], payload:id});
         this.props.AppActions.getMessages(token, id)
     }
 
@@ -23,7 +23,8 @@ export default class Message extends Component {
         const thread_id = thread;
         const message = this.message.value;
         const token = this.props.auth.token;
-        this.props.dispatch({type:MESSAGE[1], payload:JSON.stringify({ thread, message, token }) })
+        const type = "SEND_MESSAGE";
+        this.props.dispatch({type:MESSAGE[1], payload:JSON.stringify({ thread, message, token, type }) })
 
     }
 

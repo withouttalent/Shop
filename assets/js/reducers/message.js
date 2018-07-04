@@ -27,7 +27,7 @@ export default function message(state = initialState, action) {
         case GET_CHATS[2]:
             return {...state, fetching: false};
         case GET_MESSAGES[0]:
-            return {...state, fetching: true, messages: undefined, current_thread:action.payload};
+            return {...state, fetching: true, messages: undefined, current_thread:action.payload.id};
         case GET_MESSAGES[1]:
             return {...state, fetching: false, messages: action.payload};
         case GET_MESSAGES[2]:
@@ -37,8 +37,7 @@ export default function message(state = initialState, action) {
         case CONNECTION[1]:
             return { ...state};
         case MESSAGE[0]:
-            const msg = state.messages;
-            return {...state, messages:msg.join(action.payload) };
+            return {...state, messages:[...state.messages, action.payload] };
         case MESSAGE[1]:
             return {...state, empty: action.payload };
         default:
