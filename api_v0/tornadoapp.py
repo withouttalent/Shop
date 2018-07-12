@@ -9,37 +9,55 @@ import aioredis
 import aioredis
 import asyncio
 from tornado.concurrent import Future
+from aioredis.abc import AbcChannel
+from aioredis.pubsub import Receiver
+from tornado import escape
+import ast
+import time
 connections = []
+r = redis.StrictRedis()
+p = r.pubsub()
+p.psubscribe("thread:*")
 
-class EchoWebSocket(tornado.websocket.WebSocketHandler):
 
-    async def open(self):
-        print("WebSocket opened")
-        connections.append(self)
+
+class WSHandler(tornado.websocket.WebSocketHandler):
+
+    def __init__(self, *args, **kwargs):
+        super(WSHandler, self).__init__(*args, **kwargs)
+        self.message_iter = 20
+
+    def open(self):
+        print("websocket opened")
 
     def check_origin(self, origin):
         return True
 
-    async def on_message(self, data):
-        print(data)
-        json_data = json.loads(data)
-        if json_data['type'] == "SEND_MESSAGE":
-            token = json_data['token']
-            message = json_data['message']
-            thread = json_data['thread']
-            type = json_data['type']
-            await self.post(message, thread, token)
-        if json_data['type'] == "SUBSCRIBE_THREAD":
-            asyncio.ensure_future(self.setup_redis(json_data))
+    async def on_message(self, evt):
+        data = json.loads(evt)
+        if data['type'] == "SEND_MESSAGE":
+            token = data['token']
+            message = data['message']
+            self.thread = data['thread']
+            await self.post(message, self.thread, token)
+        if data['type'] == "SUBSCRIBE_THREAD":
+            print(data)
+            asyncio.ensure_future(self.setup(data['id']))
+        if data['type'] == "FETCH_MESSAGE":
+            await self.fetch_message(data['id'], data['token'])
 
+    async def fetch_message(self, thread_id, token):
+        http_client = httpclient.AsyncHTTPClient()
+        url = "http://127.0.0.1:8000/api/v0/thread/fetch-message/"
+        headers = {'Authorization': 'JWT ' + token, "Content-Type": "application/json"}
+        context = {'thread': thread_id, 'fetch':self.message_iter + 20, 'message_iter':self.message_iter}
+        self.message_iter += 20
+        body = json.dumps(context)
+        request = await http_client.fetch(request=url, method="POST", headers=headers, body=body)
+        http_client.close()
+        data = {"events":"FETCH_MESSAGE", "payload":request.body.decode()}
+        self.write_message(data)
 
-    async def setup_redis(self, data):
-        self.connection = await aioredis.create_redis('redis://127.0.0.1')
-        self.thread = "".join("thread_" + str(data['id']))
-        channel = await self.connection.subscribe(self.thread)
-        print(channel)
-        ch1 = channel[0]
-        await asyncio.ensure_future(consumer(ch1))
 
     async def post(self, message, thread, token):
         http_client = httpclient.AsyncHTTPClient()
@@ -50,37 +68,46 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         request = await http_client.fetch(request=url, method="POST", headers=headers, body=body)
         http_client.close()
 
+    async def setup(self, id):
+        self.conn = await aioredis.create_redis("redis://127.0.0.1")
+        self.thread = "thread:{!s}".format(id)
+        channel = await self.conn.psubscribe(self.thread)
+        await asyncio.ensure_future(send_message(channel, self))
+
+
 
     def on_close(self):
-        self.connection.unsubscribe(self.thread)
-        self.connection.close()
-        print("WebSocket closed")
-        connections.remove(self)
+        print("WS close")
+        self.conn.unsubscribe("thread:{!s}".format(str(self.thread)))
+        self.conn.close()
 
 
 
-class RedisPub:
-    def __init__(self):
-        r = redis.StrictRedis()
+
+async def send_message(channel, obj):
+    print("this")
+    # redis = await aioredis.create_redis("redis://127.0.0.1")
+    # channel_pattern = await redis.psubscribe("thread:*",)
+    while (await channel[0].wait_message()):
+        msg = await channel[0].get(encoding="utf-8")
+        print(msg)
+        data = {"events":"NEW_MESSAGE", "payload":msg[1]}
+        await obj.write_message(data)
 
 
-async def consumer(channel):
-    print("now work here")
-    print(connections)
-    while (await channel.wait_message()):
-        msg = await channel.get()
-        for connection in connections:
-            print(connection)
-            await connection.write_message(msg)
+
 
 
 application = tornado.web.Application([
-    (r"/", EchoWebSocket),
+    (r"/", WSHandler),
 ])
 application.autoreload = True
 application.listen(8888, '127.0.0.1')
 tornado.autoreload.start()
 try:
+    print("""
+    #########################################################
+    """)
     loop = tornado.ioloop.IOLoop.current()
     loop.start()
 except KeyboardInterrupt:

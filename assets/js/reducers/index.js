@@ -5,7 +5,7 @@ import auth from './auth'
 import profile from './profile'
 import detail from './detail'
 import message from './message'
-
+import { routerReducer } from 'react-router-redux'
 
 export default combineReducers({
     items,
@@ -14,5 +14,6 @@ export default combineReducers({
     profile,
     detail,
     message,
+    routing: routerReducer,
 })
 

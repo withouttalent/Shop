@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
+import * as style from '../css/base.css'
+
 
 export default class Items extends Component {
 
@@ -11,7 +13,7 @@ export default class Items extends Component {
     render() {
         const {fetching, items} = this.props;
         return <div className="row">
-        <div className="content">
+        <div className={style.content}>
             {fetching ?
                 undefined
             :

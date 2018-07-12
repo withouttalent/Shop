@@ -1,9 +1,11 @@
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.models import User
 import redis
 import json
 from .serializers import *
@@ -16,6 +18,22 @@ class DetailUser(APIView):
         user = Profile.objects.get(user__username=request.user)
         serializer = ProfileSerializer(user)
         return Response(serializer.data)
+
+class CreateUser(APIView):
+    permission_classes = ()
+
+    def post(self, request, format=None):
+        try:
+            user = User.objects.create_user(request.data['username'],
+                                            request.data['email'],
+                                            request.data['password'])
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        serializer = TokenObtainPairView({"username":request.data['username'], "password":request.data['password']})
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
 
 
 
@@ -51,6 +69,19 @@ class Threads(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+class FetchMessageThread(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        print(request.data)
+        thread = int(request.data['thread'])
+        fetch = request.data['fetch']
+        message_iter = request.data['message_iter']
+        queryset = User.objects.get(username=request.user).thread_set.get(pk=thread).message_set.order_by("-datetime")[message_iter:fetch]
+        print("Hi")
+        serializer = ChatSerializer(queryset[::-1], many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class AddMessageInThread(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     def get(self):
@@ -74,7 +105,7 @@ class AddMessageInThread(APIView):
                        "datetime":str(last_msg.datetime),
                        "sender":last_msg.sender.username,
                        "thread":last_msg.thread.id}
-            r.publish("".join("thread_" + str(thread.id)), str(payload))
+            r.publish("".join("thread:" + str(thread.id)), payload)
             return Response(status=status.HTTP_200_OK)
             # except:
             #     return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -82,15 +113,14 @@ class AddMessageInThread(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
 class ThreadView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, id, format=None):
-        queryset = User.objects.get(username=request.user).thread_set.get(pk=id).message_set.all()
-        serializer = ChatSerializer(queryset, many=True)
+        queryset = User.objects.get(username=request.user).thread_set.get(pk=id).message_set.order_by("-datetime")[:20]
+        serializer = ChatSerializer(queryset[::-1], many=True)
         return Response(serializer.data)
+
 
 ########################################################################################################################
 class ListCart(APIView):

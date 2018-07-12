@@ -1,33 +1,26 @@
-//require our dependencies
 var path = require('path')
 var webpack = require('webpack')
 
+
 module.exports = {
     devServer: {
+      historyApiFallback: true,
       inline: true,
-      contentBase: './assets/bundles',
+      contentBase: 'assets/bundles',
+      publicPath: "/user/",
       port: 3000,
-      historyApiFallback: true
     },
     devtool: "cheap-module-eval-source-map",
-    //the base directory (absolute path) for resolving the entry option
-    context: path.resolve(__dirname),
-    //the entry point we created earlier. Note that './' means 
-    //your current directory. You don't have to specify the extension  now,
-    //because you will specify extensions later in the `resolve` section
-    entry: ['./assets/js/index'],
+    entry: ['webpack-dev-server/client?http://127.0.0.1:3000',
+        './assets/js/index'],
     
     output: {
-        //where you want your compiled bundle to be stored
-        path: path.resolve('./assets/bundles'),
-        //naming convention webpack should use for your files
+        path: __dirname + '/assets/bundles',
         filename: 'bundle.js',
     },
     
     plugins: [
-        //tells webpack where to store data about your bundles.
         new webpack.HotModuleReplacementPlugin(),
-        // new webpack.optimize.OccurrenceOrderPlugin()
     ],
     
     module: {
@@ -36,16 +29,10 @@ module.exports = {
                 test:/\.css$/,
                 use:['style-loader', 'css-loader']
             },
-            //a regexp that tells webpack use the following loaders on all 
-            //.js and .jsx files
-            {test: /\.jsx?$/, 
-                //we definitely don't want babel to transpile all the files in 
-                //node_modules. That would take a long time.
-                exclude: /node_modules/, 
-                //use the babel loader 
+            {test: /\.jsx?$/,
+                exclude: /node_modules/,
                 loader: 'babel-loader', 
                 query: {
-                    //specify that we will be dealing with React code
                     presets: ['react'] 
                 }
             }
@@ -53,9 +40,7 @@ module.exports = {
     },
     
     resolve: {
-        //tells webpack where to look for modules
         modules: ['node_modules'],
-        //extensions that should be used to resolve modules
         extensions: ['.js', '.jsx'] 
     }   
 }

@@ -18,11 +18,6 @@ class Header extends Component {
         this.props.LoginActions.checkToken(token, refresh);
     }
 
-    // componentDidMount() {
-    //     const token = localStorage.getItem('token');
-    //     const refresh = localStorage.getItem('refresh');
-    //     this.props.LoginActions.checkToken(token, refresh);
-    // }
 
     onSubmit(e) {
         e.preventDefault();
@@ -46,12 +41,12 @@ class Header extends Component {
         return <header>
             <Link to="/">
             <div className="logo">
-                Магазин
+                Магазин1
             </div>
             </Link>
             {(this.props.auth.isValid === false) ?
                 <div className="auth">
-                    <Link to="/user/signup">
+                    <Link to="/signup">
                         <div className="signup">Sign up</div>
                     </Link>
                     <div onClick={::this.handleClick} className="login">log in</div>
@@ -78,8 +73,8 @@ class Header extends Component {
                 :
                 <div className="auth-true">
                     <Link to="/"><div onClick={::this.onClickLogOut} className="logout">Log Out</div></Link>
-                    {this.props.profile.fetching === false ?
-                        this.props.profile.user.username !== undefined ?
+                    {this.props.profile.user.is_active === true ?
+                        this.props.profile.fetching === false ?
                             <Link to="/user">
                                 <div className="username">{this.props.profile.user.username}</div>
                             </Link>

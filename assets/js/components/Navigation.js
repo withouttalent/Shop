@@ -22,7 +22,7 @@ export default class Navigation extends Component {
                 undefined
                 :
                 <div className="exsistens">
-                    {categories.map((category, id) => <Link to="/">
+                    {categories.map((category, id) => <Link key={id} to="/">
                         <div key={id} onClick={::this.handleClick} className="navigation-category">{category.name}</div>
                     </Link>)}
                 </div>

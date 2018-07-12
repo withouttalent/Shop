@@ -4,43 +4,42 @@ import {bindActionCreators} from 'redux';
 import * as ProfileActions from '../actions/ProfileActions';
 import * as AppActions from '../actions/AppActions'
 import Cart from '../components/Cart';
-import Spinner from '../components/Spinner'
-import {Link, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 import Message from '../components/Message'
-import {GET_USERS} from "../constans/Page";
 import Profile from '../components/Profile'
-import { withRouter } from 'react-router'
+import ThreadRoom from '../components/ThreadRoom'
 
-
+import * as style from '../css/base.css'
 
 
 class Authentication extends Component {
     render() {
         const {profile, auth, message} = this.props;
         const {getCart} = this.props.ProfileActions;
-        return <div className="content">
-                <div className="wrap">
-                        <Profile profile={profile} auth={auth}/>
-                    <Switch>
-                        <Route path="/user/cart"
-                               render={() => <Cart profile={profile} auth={auth} AppActions={this.props.AppActions}
-                                                   getCart={getCart}/>}/>
-                        <Route path="/user/message"
-                               render={() => <Message message={message} auth={auth}
-                                                      AppActions={this.props.AppActions} dispatch={this.props.dispatch} />}/>
-                    </Switch>
-                </div>
+        return <div className={style.content}>
+            <div className="wrap">
+            <Profile profile={profile} auth={auth} getCart={getCart} AppActions={this.props.AppActions} />
+            <Switch>
+                <Route exact path="/user/message" component={Message} />
+                <Route exact path="/user/cart"
+                       render={() => <Cart profile={profile} auth={auth} AppActions={this.props.AppActions}
+                                           getCart={getCart}/>}/>
+                <Route exact path="/user/message/:id" render={() => <ThreadRoom auth={auth} dispatch={this.props.dispatch} message={message} match={this.props.match} AppActions={this.props.AppActions} />} />
+            </Switch>
+            </div>
             </div>
 
 
     }
 }
 
-export function mapStateToProps(state) {
+export function mapStateToProps(state, ownProps) {
     return {
         profile: state.profile,
         auth: state.auth,
         message: state.message,
+        match: ownProps.location.pathname,
+        routing: state.routing,
     }
 }
 

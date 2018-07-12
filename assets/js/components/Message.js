@@ -1,8 +1,18 @@
 import React, {Component} from 'react'
 import {CONNECTION, GET_USERS, MESSAGE} from "../constans/Page";
+import * as Scroll from 'react-scroll';
+import ReactDOM from 'react-dom'
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import * as AppActions from "../actions/AppActions";
+import * as ProfileActions from "../actions/ProfileActions";
+import { Link } from 'react-router-dom'
 
 
-export default class Message extends Component {
+class Message extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     componentWillMount() {
         const token = localStorage.getItem('token');
@@ -11,10 +21,8 @@ export default class Message extends Component {
 
     }
 
-    getCurrentChat(id, e) {
-        const token = this.props.auth.token;
-        this.props.dispatch({type:CONNECTION[0], payload:id});
-        this.props.AppActions.getMessages(token, id)
+    componentDidMount() {
+
     }
 
 
@@ -28,8 +36,10 @@ export default class Message extends Component {
 
     }
 
+
     render() {
         const {message} = this.props;
+        let scroll = Scroll.animateScroll;
         return <div className="message-wrap">
             <div className="add-thread">
                 {message.fetching ? undefined :
@@ -41,30 +51,30 @@ export default class Message extends Component {
             </div>
             <div className="exist-thread">
                 {message.dialog.length === undefined ? undefined :
-                    message.dialog.map(thread => <div onClick={this.getCurrentChat.bind(this, thread.id)}
-                                                      key={thread.id} className="thread">
+                    message.dialog.map(thread =>
+                        <Link to={"/user/message/" + thread.id} key={thread.id} ><div key={thread.id} className="thread">
                         <div className="participant">{thread.participants[1].username}</div>
-                    </div>)}
-            </div>
-            <div className="message-thread">
-                {message.fetching ? undefined : message.messages.length === undefined ? undefined :
-                    <div className="wrap1">
-                        <div className="exist-message">
-                        {message.messages.map(msg => <div key={msg.id} className="message-dialog">
-                        <div className="sender">{msg.sender}</div>
-                        <div className="message-text">{msg.text}</div>
-                    </div>)}
-                        </div>
-                        <div className="send-msg-form">
-                            <form onSubmit={this.clickToSendMessage.bind(this, message.current_thread)} >
-                                <input ref={(node) => {this.message = node}} required="true" placeholder="Напишите ваше сообщение..." type="text" className="message-input"/>
-                                <button className="send-msg" name="Отправить" >Отправить</button>
-                            </form>
-                        </div>
-
-                    </div>
-                }
+                        </div></Link>)}
             </div>
         </div>
     }
 }
+
+
+export function mapStateToProps(state) {
+    return {
+        profile: state.profile,
+        auth: state.auth,
+        message: state.message,
+    }
+}
+
+export function mapDispatchToProps(dispatch) {
+    return {
+        ProfileActions: bindActionCreators(ProfileActions, dispatch),
+        AppActions: bindActionCreators(AppActions, dispatch),
+        dispatch: dispatch
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Message)

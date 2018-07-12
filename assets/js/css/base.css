@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 a, a:hover, a:link, a:visited {
-    color: #FFFFFF;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -53,9 +53,10 @@ footer {
     margin-right: 20px;
     float: right;
 }
-.content {
+:local(.content) {
     display: flex;
     width: 100%;
+    height: 94.5vh;
     flex-wrap: wrap;
     align-content: baseline;
     justify-content: center;
@@ -130,7 +131,7 @@ img {
     margin-left: 10px;
 }
 a a:hover a:active a:link a:visited {
-    color: #FFF;
+    color: #000000;
     text-decoration: none;
 }
 /*------------------------------------*/
@@ -229,18 +230,25 @@ input {
 }
 
 .exist-message {
-    height: 82vh;
+    width: 100%;
     overflow: auto;
+    height: 93.5%;
 }
 
 .wrap1 {
-    margin-left: 10px;
+    width: 60%;
+    height: 100%;
+    background-color: #FFFFFF;
 }
 
 .message-thread {
     float: left;
     height: 100%;
-    width: 69%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    justify-content: center;
 
 }
 
@@ -255,22 +263,41 @@ input {
 
 .message-input {
     height: 30px;
-    width: 75%;
+    width: 70%;
+    background-color: #22485d;
+    border: 0;
+    color: #FFFFFF;
+    margin-left: 10px;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 .send-msg {
-    width: 80px;
-    height: 36px;
+    width: 20%;
+    height: 37px;
     text-align: center;
     line-height: 30px;
     background-color: #22485d;
     color: #FFFFFF;
+    border: 1.5px solid #FFFFFF;
+    margin-right: 10px;
+    float: right;
     cursor: pointer;
 }
 
 .send-msg-form {
-
+    width: 47.4%;
+    position: fixed;
+    height: 60px;
+    bottom: 0px;
+    background-color: #22485d;
 }
+
+.send-form {
+    height: 100%;
+    padding-top: 10px;
+}
+
+
 
 .message-text {
 
@@ -302,7 +329,6 @@ input {
 .wrap {
     width: 100%;
     display: flex;
-    height: 95vh;
 }
 
 .inline {
@@ -310,6 +336,10 @@ input {
     color: #fff;
     text-align: center;
     font-size: 16px;
+}
+
+.inline:link, .inline:focus {
+    color: #FFFFFF;
 }
 
 .inline-actions {
@@ -648,3 +678,159 @@ button.button-buy:hover {
 }
 
 
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
+}
+
+
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 400px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  background: url('https://goo.gl/YbktSj');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #FFF;
+  text-align: center;
+}
+
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+  background: #32508E;
+}
+
+button.social-signin.twitter {
+  background: #55ACEE;
+}
+
+button.social-signin.google {
+  background: #DD4B39;
+}

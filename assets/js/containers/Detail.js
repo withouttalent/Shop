@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import * as AppActions from '../actions/AppActions';
-
-import '../css/detail.css'
+require("../css/detail.css")
+// import '../css/detail.css'
 
 class Detail extends Component {
 
