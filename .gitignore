@@ -1,4 +1,4 @@
-/node_modules
-/venv
+/node_modules/
+/venv/
 .db.sqlite3
 .package.json
