@@ -41,7 +41,7 @@ class Header extends Component {
         return <header>
             <Link to="/">
             <div className="logo">
-                Магазин1
+                Магазин
             </div>
             </Link>
             {(this.props.auth.isValid === false) ?
