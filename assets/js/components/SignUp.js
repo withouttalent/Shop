@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import * as LoginActions from "../actions/LoginActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 
 
-export default class SignUp extends Component {
+class SignUp extends Component {
+
+
     handleSubmit(e) {
         e.preventDefault();
-        console.log('24')
-        if (this.password === this.repassword) {
-
+        if (this.password.value === this.repassword.value) {
+            console.log("hi1")
+            this.props.LoginActions.signUp(this.username.value, this.email.value, this.password.value)
         } else {
 
         }
@@ -40,3 +45,18 @@ export default class SignUp extends Component {
         </div>
     }
 }
+
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        LoginActions: bindActionCreators(LoginActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

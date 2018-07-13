@@ -5,10 +5,9 @@ var webpack = require('webpack')
 module.exports = {
     devServer: {
       historyApiFallback: true,
-      hot: false,
       inline: true,
       contentBase: 'assets/bundles',
-      publicPath: "/user/",
+      publicPath: "/",
       port: 3000,
     },
     devtool: "cheap-module-eval-source-map",

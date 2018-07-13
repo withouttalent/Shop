@@ -1,3 +1,4 @@
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from rest_framework import permissions
@@ -9,7 +10,6 @@ from django.contrib.auth.models import User
 import redis
 import json
 from .serializers import *
-
 
 class DetailUser(APIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -29,9 +29,12 @@ class CreateUser(APIView):
                                             request.data['password'])
         except ValueError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-        serializer = TokenObtainPairView({"username":request.data['username'], "password":request.data['password']})
-        print(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        pall = json.dumps({"username":request.data["username"], "password":request.data["password"]})
+        call = json.loads(pall)
+        print(call)
+        serializer = TokenObtainPairSerializer(data=call)
+        past = serializer.is_valid(raise_exception=True)
+        return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
 
 

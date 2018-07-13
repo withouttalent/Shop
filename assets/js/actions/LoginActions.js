@@ -26,9 +26,14 @@ export function signUp(username, email, password) {
     return (dispatch) => {
         axios.post("http://127.0.0.1:8000/api/v0/create-user/", {username:username, email:email, password:password})
             .then(response => response.data)
-            .then(data => dispatch({type:types.LOGIN_USER[1], payload:{token_jwt:data['access'],
+            .then(data => { console.log(data);
+                          localStorage.setItem('token', data['access']);
+                          localStorage.setItem('refresh', data['refresh']);
+                dispatch({type:types.LOGIN_USER[1], payload:{token_jwt:data['access'],
                                                                         refresh_jwt:data['refresh']}
-                                    }))
+                                    })
+            }
+            )
             .catch(error => dispatch({type:types.LOGIN_USER[2], payload:error}))
 
     }

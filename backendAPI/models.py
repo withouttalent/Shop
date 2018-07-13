@@ -47,7 +47,7 @@ class Charect(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pic = models.ImageField('Фото', upload_to='templates/media')
+    pic = models.ImageField('Фото', upload_to='templates/media', default="templates/media")
 
     def __str__(self):
         return self.user.username
