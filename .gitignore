@@ -1,4 +1,8 @@
-/node_modules/
-/venv/
-.db.sqlite3
-.package.json
+node_modules
+venv
+db.sqlite3
+package.json
+.idea
+__pycache__
+assets/bundles/
+Shop/templates

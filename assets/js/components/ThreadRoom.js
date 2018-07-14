@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ReactDOM from 'react-dom'
 import {CONNECTION, FETCH_MESSAGE, MESSAGE} from "../constans/Page";
+import * as style from "../css/thread.css"
 import { history } from '../index'
 
 
@@ -23,9 +24,7 @@ export default class ThreadRoom extends Component{
 
     componentDidUpdate() {
         if (this.historyChanged) {
-            console.log(this.scrollAtBottom)
             if (this.scrollAtBottom) {
-                console.log("na dne");
                 this.scrollToBottom();
             }
             // if (!this.scrollAtBottom) {
@@ -84,15 +83,15 @@ export default class ThreadRoom extends Component{
 
                             </div> :
                                 message.messages.map(msg => <div key={msg.id} className="message-dialog">
+                                    <div className={style.image_message}><img src={msg.pic} alt="" className={style.image_inner_message}/></div>
                                     <div className="sender">{msg.sender}</div>
                                     <div className="message-text">{msg.text}</div>
                                 </div>)}
                             </div>
-
-                        <div className="send-msg-form">
-                            <form className="send-form" onSubmit={this.clickToSendMessage.bind(this, message.current_thread)} >
-                                <input className="message-input" ref={(node) => {this.message = node}} required="true" placeholder="Напишите ваше сообщение..." type="text" className="message-input"/>
-                                <button className="send-msg" name="Отправить" >Отправить</button>
+                        <div className={style.send_msg_form}>
+                            <form className={style.send_form} onSubmit={this.clickToSendMessage.bind(this, message.current_thread)} >
+                                <input className={style.message_input} ref={(node) => {this.message = node}} required="true" placeholder="Напишите ваше сообщение..." type="text"/>
+                                <button className={style.send_msg} name="Отправить" >Отправить</button>
                             </form>
                         </div>
 

@@ -107,6 +107,7 @@ class AddMessageInThread(APIView):
                        "text":last_msg.text,
                        "datetime":str(last_msg.datetime),
                        "sender":last_msg.sender.username,
+                       "pic":last_msg.sender.profile.get_absolute_url(),
                        "thread":last_msg.thread.id}
             r.publish("".join("thread:" + str(thread.id)), payload)
             return Response(status=status.HTTP_200_OK)

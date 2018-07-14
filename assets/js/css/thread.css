@@ -1,0 +1,97 @@
+
+
+
+:local(.wrap6) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+:local(.exist_thread) {
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+:local(.thread) {
+    height: 95px;
+    margin-top: 15px;
+    border: 1px solid #cee7f5;
+}
+
+:local(.thread:hover) {
+    background-color: #edf9ff;
+}
+
+:local(.participants) {
+    width: 75%;
+    margin-top: 15px;
+}
+
+:local(.image_participants) {
+    float: left;
+    height: 70px;
+    width: 70px;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+:local(.image_inner) {
+    border-radius: 50%;
+}
+
+:local(.send_msg_form) {
+    width: 47.4%;
+    position: fixed;
+    height: 60px;
+    bottom: 0px;
+    background-color: #22485d;
+}
+
+:local(.send_form) {
+    height: 100%;
+    padding-top: 10px;
+}
+
+
+:local(.message_input) {
+    height: 30px;
+    width: 70%;
+    background-color: #22485d;
+    border: 0;
+    color: #FFFFFF;
+    margin-left: 10px;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+:local(.send_msg) {
+    width: 20%;
+    height: 37px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #22485d;
+    color: #FFFFFF;
+    border: 1.5px solid #FFFFFF;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+:local(.image_message) {
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+
+:local(.image_inner_message) {
+    width: 100%;
+}
+
+:local(.last_message) {
+    color: #000000;
+    background-color: #e4ecf1;
+    height: 25px;
+    margin-top: 15px;
+}

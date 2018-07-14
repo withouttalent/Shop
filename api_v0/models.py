@@ -7,6 +7,12 @@ class Thread(models.Model):
     last_message = models.DateTimeField(null=True, blank=True, db_index=True)
 
 
+    def get_last_message(self):
+        try:
+            return self.message_set.latest('id').text
+        except:
+            return ""
+
 
 class Message(models.Model):
     text = models.TextField()

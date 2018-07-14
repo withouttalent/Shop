@@ -7,7 +7,7 @@ module.exports = {
       historyApiFallback: true,
       inline: true,
       contentBase: 'assets/bundles',
-      publicPath: "/",
+      publicPath: "/user/",
       port: 3000,
     },
     devtool: "cheap-module-eval-source-map",
@@ -16,7 +16,7 @@ module.exports = {
     
     output: {
         path: __dirname + '/assets/bundles',
-        filename: 'bundle.js',
+        filename: 'bundle1.js',
     },
     
     plugins: [

@@ -1,0 +1,16 @@
+
+
+
+:local(.inline_link, .inline_link:hover, ) {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+:local(.inline_actions) {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    color: #FFFFFF;
+    background-color: #08181f;
+    border-bottom: 2px solid #dfdfdf;
+}

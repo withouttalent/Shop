@@ -73,17 +73,23 @@ class UserWrap(serializers.ModelSerializer):
         fields = ('id', "username", 'pic')
 
 
+class ChatSerializer(serializers.ModelSerializer):
+    sender = serializers.CharField(source="sender.username")
+    pic = serializers.URLField(source="sender.profile.get_absolute_url")
+    class Meta:
+        model = Message
+        fields = ('id', 'text', 'pic', 'datetime', 'sender', 'thread')
+
+class BitMessage(serializers.ModelSerializer):
+
+    class Meta:
+        model = Message
+        fields = ("text",)
+
 class ThreadSerializer(serializers.ModelSerializer):
     participants = UserWrap(many=True, read_only=True)
 
     class Meta:
         model = Thread
-        fields = ('id', 'participants')
+        fields = ('id','get_last_message', 'participants')
 
-
-class ChatSerializer(serializers.ModelSerializer):
-    sender = serializers.CharField(source="sender.username")
-
-    class Meta:
-        model = Message
-        fields = ('id', 'text', 'datetime', 'sender', 'thread')

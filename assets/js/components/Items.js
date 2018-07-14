@@ -23,7 +23,7 @@ export default class Items extends Component {
                             items.map(item => (
                     <div key={item.id} className="item">
 
-                        <Link to={{
+                        <Link className={style.link_item} to={{
                             pathname: item.id
                         }}>
 

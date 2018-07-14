@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import * as AppActions from "../actions/AppActions";
 import * as ProfileActions from "../actions/ProfileActions";
 import { Link } from 'react-router-dom'
-
+import * as style from "../css/thread.css"
 
 class Message extends Component {
     constructor(props) {
@@ -49,13 +49,20 @@ class Message extends Component {
                         </div>)
                 }
             </div>
-            <div className="exist-thread">
+            <div className={style.wrap6}>
+            <div className={style.exist_thread}>
                 {message.dialog.length === undefined ? undefined :
-                    message.dialog.map(thread =>
-                        <Link to={"/user/message/" + thread.id} key={thread.id} ><div key={thread.id} className="thread">
-                        <div className="participant">{thread.participants[1].username}</div>
-                        </div></Link>)}
+                    message.dialog.map(thread =><Link to={"/user/message/" + thread.id} key={thread.id}>
+                                <div key={thread.id} className={style.thread}>
+                                    <div className={style.image_participants}><img className={style.image_inner} src={thread.participants[1].pic} alt=""/></div>
+                                    <div className={style.participants}>{thread.participants[1].username}</div>
+                                    <div className={style.last_message}>{thread.get_last_message}</div>
+                                </div>
+                            </Link>
+
+                        )}
             </div>
+                </div>
         </div>
     }
 }

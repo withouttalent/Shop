@@ -2,6 +2,8 @@ from django.contrib.auth.models import User, AbstractUser, AbstractBaseUser
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import random
+import os
 
 
 # Create your models here.
@@ -46,8 +48,9 @@ class Charect(models.Model):
 
 
 class Profile(models.Model):
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pic = models.ImageField('Фото', upload_to='templates/media', default="templates/media")
+    pic = models.ImageField('Фото', upload_to='templates/media', blank=True)
 
     def __str__(self):
         return self.user.username
@@ -58,10 +61,22 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            Profile.objects.create(user=instance)
+            Profile.objects.create(user=instance).save()
+
+    # def save(self, *args, **kwargs):
+    #     if self.pic == False:
+    #         os.chdir("../robohash_avatar")
+    #         count_dir = os.listdir()
+    #         random_pic = random.randint(0, len(count_dir))
+    #         self.pic = "templates/media/" + count_dir[random_pic]
+    #         super(Profile, self).save(*args, **kwargs)
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
+        if instance.profile.pic == "":
+            count_dir = os.listdir("Shop/templates/image/templates/media/robohash_avatar")
+            random_pic = random.randint(0, len(count_dir))
+            instance.profile.pic = "templates/media/robohash_avatar/" + count_dir[random_pic]
         instance.profile.save()
 
 
